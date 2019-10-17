@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HardwareInventory.AuthService;
+using HardwareInventoryDAO;
 
 namespace HardwareInventory
 {
@@ -31,6 +32,10 @@ namespace HardwareInventory
             MessageBox.Show(x.ToString());
 
             client.Close();
+
+            HardwareInventoryEntities context = new HardwareInventoryEntities();
+            context.User.Add(new User() { id = 1, login = "test2", password="haslo" });
+            context.SaveChanges();
         }
     }
 }
