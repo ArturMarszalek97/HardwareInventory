@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HardwareInventory.AuthService;
 
 namespace HardwareInventory
 {
@@ -23,6 +24,13 @@ namespace HardwareInventory
         public MainWindow()
         {
             InitializeComponent();
+            AuthServiceClient client = new AuthServiceClient();
+            var x = client.Authorize(3, 5);
+            this.tekst.Text = x.ToString();
+            //this.tekst.Text = "asd";
+            MessageBox.Show(x.ToString());
+
+            client.Close();
         }
     }
 }
