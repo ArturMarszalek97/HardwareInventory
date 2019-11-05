@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HardwareInventory.AuthService;
+using HardwareInventoryDAO;
 
 namespace HardwareInventory
 {
@@ -23,6 +25,17 @@ namespace HardwareInventory
         public MainWindow()
         {
             InitializeComponent();
+            AuthServiceClient client = new AuthServiceClient();
+            var x = client.Authorize(3, 5);
+            this.tekst.Text = x.ToString();
+            //this.tekst.Text = "asd";
+            MessageBox.Show(x.ToString());
+
+            client.Close();
+
+            HardwareInventoryEntities context = new HardwareInventoryEntities();
+            context.User.Add(new User() { id = 1, login = "test2", password="haslo" });
+            context.SaveChanges();
         }
     }
 }
