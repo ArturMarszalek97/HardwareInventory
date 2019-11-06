@@ -12,6 +12,6 @@ namespace Cache.Logic
     public interface ICacheService
     {
         [OperationContract]
-        void DoWork();
+        int DoWork();
     }
 }
