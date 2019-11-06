@@ -51,5 +51,15 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cache.Logic\Cache.Logic.csproj">
+      <Project>{36AE05F9-4758-4260-AE5E-E2E0840D9D7E}</Project>
+      <Name>Cache.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HardwareInventoryDAO\HardwareInventoryDAO.csproj">
+      <Project>{68C90011-4328-4179-BED2-22222CE294EE}</Project>
+      <Name>HardwareInventoryDAO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

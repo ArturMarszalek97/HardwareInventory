@@ -12,6 +12,6 @@ namespace Authorization.Logic
     public interface IAuthService
     {
         [OperationContract]
-        int Authorize(int x, int y);
+        bool Authorize(string login, string password);
     }
 }
