@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IAuthorizationWCFContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AuthorizationWCFContract.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\HardwareInventoryService.Models\HardwareInventoryService.Models.csproj">
+      <Project>{D7DFDD57-9D23-4C95-A9D3-DAA162524C89}</Project>
+      <Name>HardwareInventoryService.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HardwareInventoryService.Modules.Authorization.Logic\HardwareInventoryService.Modules.Authorization.Logic.csproj">
+      <Project>{E128A482-2173-4AF9-9ED3-CA512CCDBFC2}</Project>
+      <Name>HardwareInventoryService.Modules.Authorization.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HardwareInventoryService.ServicesReferences\HardwareInventoryService.ServicesReferences.csproj">
+      <Project>{7930E281-F196-483D-969D-F2EDAC3527B1}</Project>
+      <Name>HardwareInventoryService.ServicesReferences</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

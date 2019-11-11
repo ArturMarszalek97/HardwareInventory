@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HardwareInventoryService.Models
+namespace HardwareInventoryService.Models.Attributes
 {
-    public class Class1
+    public class HashDataForLogAttribute : Attribute
     {
     }
 }
