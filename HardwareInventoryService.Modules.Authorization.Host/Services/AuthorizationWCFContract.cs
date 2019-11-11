@@ -1,8 +1,11 @@
 ﻿using HardwareInventoryService.Models.Attributes;
+using HardwareInventoryService.Models.Helpers;
 using HardwareInventoryService.Models.Models.Authorization;
 using HardwareInventoryService.Modules.Authorization.Host.Interfaces;
+using HardwareInventoryService.Modules.Authorization.Logic.Helpers;
 using HardwareInventoryService.Modules.Authorization.Logic.Interfaces;
 using HardwareInventoryService.ServicesReferences.Contracts;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,19 +20,66 @@ namespace HardwareInventoryService.Modules.Authorization.Host.Services
 
         private readonly ILoggerService _loggerService;
 
-        public Session Authorize(Session authData)
+        public AuthorizationWCFContract()
         {
-            throw new NotImplementedException();
+
         }
 
-        public bool ChangePassword(string username, [HashDataForLog] string password, [HashDataForLog] string newPassword)
+        public AuthorizationWCFContract(ILoggerService logger, IAuthInterface authInterface)
         {
-            throw new NotImplementedException();
+            this._loggerService = logger;
+            this._authInterface = authInterface;
         }
 
-        public bool Deauthorize(Session authData)
+        public virtual Session Authorize(Session authData)
         {
-            throw new NotImplementedException();
+            var authResult = this._authInterface.Authorize(authData).Result;
+
+            if (authResult.TokenValidity > DateTime.Now)
+            {
+                this._loggerService.LogMessage(
+                    string.Format(StringContainer.SuccessfullyLoggedIn, authData.Username), LogLevel.Info);
+            }
+            else
+            {
+                this._loggerService.LogMessage(string.Format(StringContainer.FailedLoggingIn, authData.Username),
+                    LogLevel.Info);
+            }
+
+            this._loggerService.LogMessage(
+                string.Format(CommonContainer.InfoMethodCompleted, nameof(this.Authorize)), LogLevel.Info);
+
+            authResult.Password = string.Empty;
+
+            return authResult;
         }
+
+        public virtual bool Deauthorize(Session authData)
+        {
+            var authResult = this._authInterface.Deauthorize(authData).Result;
+
+            if (authResult)
+            {
+                this._loggerService.LogMessage(
+                    string.Format(StringContainer.SuccessfullyLoggedOut, authData.Username), LogLevel.Info);
+            }
+            else
+            {
+                this._loggerService.LogMessage(string.Format(StringContainer.FailedLoggingOut, authData.Username),
+                    LogLevel.Info);
+            }
+
+            this._loggerService.LogMessage(
+                string.Format(CommonContainer.InfoMethodCompleted, nameof(this.Deauthorize)), LogLevel.Info);
+
+            return authResult;
+        }
+
+        public virtual bool ChangePassword(string username, [HashDataForLog] string password, [HashDataForLog] string newPassword)
+        {
+            return this._authInterface.ChangePassword(username, password, newPassword).Result;
+        }
+
+
     }
 }

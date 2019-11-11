@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
+using ExceptionDetail = HardwareInventoryService.Models.Models.ExceptionDetail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,12 +14,15 @@ namespace HardwareInventoryService.Modules.Authorization.Host.Interfaces
     public interface IAuthorizationWCFContract
     {
         [OperationContract]
+        [FaultContract(typeof(ExceptionDetail))]
         Session Authorize(Session authData);
 
         [OperationContract]
+        [FaultContract(typeof(ExceptionDetail))]
         bool Deauthorize(Session authData);
 
         [OperationContract]
+        [FaultContract(typeof(ExceptionDetail))]
         bool ChangePassword(string username, [HashDataForLog] string password, [HashDataForLog] string newPassword);
     }
 }
