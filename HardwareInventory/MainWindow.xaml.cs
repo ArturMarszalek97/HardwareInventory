@@ -26,7 +26,7 @@ namespace HardwareInventory
         {
             InitializeComponent();
             AuthServiceClient client = new AuthServiceClient();
-            var x = client.Authorize(3, 5);
+            var x = client.Authorize("asd", "5");
             this.tekst.Text = x.ToString();
             //this.tekst.Text = "asd";
             MessageBox.Show(x.ToString());
