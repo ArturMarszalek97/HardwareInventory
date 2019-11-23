@@ -9,11 +9,13 @@ using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HardwareInventoryService.Modules.Authorization.Host.Services
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class AuthorizationWCFContract : IAuthorizationWCFContract
     {
         private readonly IAuthInterface _authInterface;

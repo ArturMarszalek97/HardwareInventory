@@ -24,11 +24,6 @@ namespace HardwareInventoryService.Modules.Authorization.Service
 
         private readonly IAuthorizationWCFContract _authorizationWCFContract;
 
-        public AuthorizationService()
-        {
-            InitializeComponent();
-        }
-
         public AuthorizationService(ILoggerService loggerService, IAuthorizationWCFContract authorizationWCFContract)
         {
             this.InitializeComponent();
@@ -63,12 +58,13 @@ namespace HardwareInventoryService.Modules.Authorization.Service
                         this._serviceHost.AddDependencyInjectionBehavior(t, AutofacHostFactory.Container);
                     }
                 }
-                //this._serviceHost.Opened += this.ServiceHost_Opened;
-                //this._serviceHost.Closed += this.ServiceHost_Closed;
-                //this._serviceHost.Closing += this.ServiceHost_Closing;
-                //this._serviceHost.Faulted += this.ServiceHost_Faulted;
-                //this._serviceHost.Opening += this.ServiceHost_Opening;
-                //this._serviceHost.UnknownMessageReceived += this.ServiceHost_UnknownMessageReceived;
+
+                this._serviceHost.Opened += this.ServiceHost_Opened;
+                this._serviceHost.Closed += this.ServiceHost_Closed;
+                this._serviceHost.Closing += this.ServiceHost_Closing;
+                this._serviceHost.Faulted += this.ServiceHost_Faulted;
+                this._serviceHost.Opening += this.ServiceHost_Opening;
+                this._serviceHost.UnknownMessageReceived += this.ServiceHost_UnknownMessageReceived;
 
 
                 this._serviceHost.Open();
@@ -80,6 +76,52 @@ namespace HardwareInventoryService.Modules.Authorization.Service
                     LogLevel.Fatal);
                 this._loggerService.LogMessage(ex.StackTrace, LogLevel.Trace);
             }
+        }
+
+        private void ServiceHost_UnknownMessageReceived(object sender, UnknownMessageReceivedEventArgs e)
+        {
+            this._loggerService.LogMessage(e.Message.ToString(), LogLevel.Debug);
+        }
+
+        private void ServiceHost_Opening(object sender, EventArgs e)
+        {
+            this._loggerService.LogMessage("Service host going to opening state.", LogLevel.Debug);
+        }
+
+        private void ServiceHost_Faulted(object sender, EventArgs e)
+        {
+            this._loggerService.LogMessage("Service host in the fault state.", LogLevel.Debug);
+        }
+
+        private void ServiceHost_Closing(object sender, EventArgs e)
+        {
+            this._loggerService.LogMessage("Service host going to closing state.", LogLevel.Debug);
+        }
+
+        private void ServiceHost_Closed(object sender, EventArgs e)
+        {
+            this._loggerService.LogMessage("Service host in the closed state.", LogLevel.Debug);
+        }
+
+        private void ServiceHost_Opened(object sender, EventArgs e)
+        {
+            this._loggerService.LogMessage("Service host in the opened state.", LogLevel.Debug);
+        }
+
+        protected override void OnStop()
+        {
+            if (this._serviceHost != null)
+            {
+                this._serviceHost.Close();
+                this._serviceHost.Opened -= this.ServiceHost_Opened;
+                this._serviceHost.Closed -= this.ServiceHost_Closed;
+                this._serviceHost.Closing -= this.ServiceHost_Closing;
+                this._serviceHost.Faulted -= this.ServiceHost_Faulted;
+                this._serviceHost.Opening -= this.ServiceHost_Opening;
+                this._serviceHost.UnknownMessageReceived -= this.ServiceHost_UnknownMessageReceived;
+
+            }
+            this._serviceHost?.Close();
         }
     }
 }

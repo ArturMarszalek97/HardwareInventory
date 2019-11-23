@@ -16,14 +16,14 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
             return authData;
         }
 
-        public Task<bool> ChangePassword(string username, [HashDataForLog] string password, [HashDataForLog] string newPassword)
+        public async Task<bool> ChangePassword(string username, [HashDataForLog] string password, [HashDataForLog] string newPassword)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() => true);
         }
 
-        public Task<bool> Deauthorize(Session authData)
+        public async Task<bool> Deauthorize(Session authData)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() => true);
         }
     }
 }
