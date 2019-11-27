@@ -44,10 +44,12 @@
   <ItemGroup>
     <Compile Include="Attributes\HashDataForLogAttribute.cs" />
     <Compile Include="Helpers\CommonContainer.cs" />
+    <Compile Include="Models\Authorization\IAuthCacheModel.cs" />
     <Compile Include="Models\Authorization\Session.cs" />
     <Compile Include="Models\Enums\ErrorCode.cs" />
     <Compile Include="Models\ExceptionDetail.cs" />
     <Compile Include="Models\LogMessage.cs" />
+    <Compile Include="NotFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

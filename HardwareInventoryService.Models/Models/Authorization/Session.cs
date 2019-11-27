@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace HardwareInventoryService.Models.Models.Authorization
 {
     [HashDataForLog]
-    public class Session
+    public class Session : IAuthCacheModel
     {
         [DataMember]
         public string Username { get; set; }
