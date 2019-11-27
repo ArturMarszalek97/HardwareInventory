@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareInventory", "HardwareInventory\HardwareInventory.csproj", "{44EFFF71-EA65-490F-B914-E8FC9C896DE5}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{60F045F2-BEA5-4170-81CA-2D2CD80CD237}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authorization", "Authorization", "{8CCADC6E-9A2C-469F-B411-E32E3F460B55}"
@@ -37,10 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{44EFFF71-EA65-490F-B914-E8FC9C896DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44EFFF71-EA65-490F-B914-E8FC9C896DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{44EFFF71-EA65-490F-B914-E8FC9C896DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44EFFF71-EA65-490F-B914-E8FC9C896DE5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68C90011-4328-4179-BED2-22222CE294EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68C90011-4328-4179-BED2-22222CE294EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68C90011-4328-4179-BED2-22222CE294EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
