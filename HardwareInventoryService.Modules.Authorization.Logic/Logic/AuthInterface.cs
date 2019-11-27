@@ -13,6 +13,10 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
     {
         public async Task<Session> Authorize(Session authData)
         {
+            if (!this.ValidateUserData(authData))
+            {
+                //var sessionFromCache = await this.GetSessionFromCache(authData);
+            }
             return authData;
         }
 
@@ -24,6 +28,11 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
         public async Task<bool> Deauthorize(Session authData)
         {
             return await Task.Run(() => true);
+        }
+
+        private bool ValidateUserData(Session authData)
+        {
+            return authData != null && !string.IsNullOrEmpty(authData.Username) && !string.IsNullOrEmpty(authData.Password);
         }
     }
 }
