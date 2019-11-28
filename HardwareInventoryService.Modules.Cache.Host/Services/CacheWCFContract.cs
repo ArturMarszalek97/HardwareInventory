@@ -4,11 +4,13 @@ using HardwareInventoryService.Modules.Cache.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HardwareInventoryService.Modules.Cache.Host.Services
 {
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class CacheWCFContract : ICacheWCFContract
     {
         private readonly ICacheLogicService _cacheLogicService;

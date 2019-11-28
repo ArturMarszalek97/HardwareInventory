@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HardwareInventoryService.Modules.Authorization.Service
+namespace HardwareInventoryService.Modules.Cache.Service
 {
     class ServiceInstallerUtility
     {

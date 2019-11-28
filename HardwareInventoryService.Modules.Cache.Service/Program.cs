@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Autofac.Integration.Wcf;
+using HardwareInventoryService.Modules.Cache.Host.Interfaces;
+using HardwareInventoryService.Modules.Cache.Host.Services;
 using HardwareInventoryService.Modules.Cache.Logic.Interfaces;
 using HardwareInventoryService.Modules.Cache.Logic.IRepositories;
 using HardwareInventoryService.Modules.Cache.Logic.Logic;
@@ -8,9 +10,11 @@ using HardwareInventoryService.Modules.Cache.Logic.Repositories;
 using HardwareInventoryService.ServicesReferences.Contracts;
 using HardwareInventoryService.ServicesReferences.Interceptors;
 using HardwareInventoryService.ServicesReferences.Services;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -56,7 +60,7 @@ namespace HardwareInventoryService.Modules.Cache.Service
 
                 ServiceBase[] ServicesToRun;
                 _cacheService = container.Resolve<CacheService>();
-                AppDomain.CurrentDomain.UnhandledException += MainHandler;
+                //AppDomain.CurrentDomain.UnhandledException += MainHandler;
                 ServicesToRun = new ServiceBase[]
                 {
                     _cacheService
@@ -69,8 +73,8 @@ namespace HardwareInventoryService.Modules.Cache.Service
                 else
                 {
                     // register console close event
-                    _consoleHandler = ConsoleEventHandler;
-                    SetConsoleCtrlHandler(_consoleHandler, true);
+                    //_consoleHandler = ConsoleEventHandler;
+                    //SetConsoleCtrlHandler(_consoleHandler, true);
 
                     _cacheService.Start();
 
@@ -78,7 +82,7 @@ namespace HardwareInventoryService.Modules.Cache.Service
                     Console.ReadKey(true);
 
                     _cacheService.Stop();
-                    AppDomain.CurrentDomain.UnhandledException -= MainHandler;
+                    //AppDomain.CurrentDomain.UnhandledException -= MainHandler;
                 }
             }
             catch (Exception ex)
@@ -109,6 +113,12 @@ namespace HardwareInventoryService.Modules.Cache.Service
                 .SingleInstance()
                 .EnableInterfaceInterceptors()
                 .InterceptedBy(typeof(MethodLoggingInterceptor));
+
+            builder.RegisterType<CacheWCFContract>().As<ICacheWCFContract>().SingleInstance().EnableClassInterceptors();
+
+            builder.RegisterType<CacheService>().SingleInstance().EnableClassInterceptors().InterceptedBy(typeof(MethodLoggingInterceptor));
+
+            return builder.Build();
         }
     }
 }
