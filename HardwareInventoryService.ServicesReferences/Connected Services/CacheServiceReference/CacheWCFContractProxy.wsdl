@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CacheWCFContractProxy" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models.Authorization" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICacheWCFContract_UpdateSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSession" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_UpdateSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_UpdateSession_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q1:ExceptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_AddSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSession" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_AddSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_AddSession_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q2:ExceptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetSessionByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionByUsername" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetSessionByUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetSessionByUsername_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q3:ExceptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetSessionsByUsernamesArray_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionsByUsernamesArray" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetSessionsByUsernamesArray_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionsByUsernamesArrayResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetSessionsByUsernamesArray_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q4:ExceptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetSessions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessions" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetSessions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSessionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetSessions_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q5:ExceptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_RemoveSessionByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveSessionByUsername" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_RemoveSessionByUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveSessionByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_RemoveSessionByUsername_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q6:ExceptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetLoggedSessions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedSessions" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetLoggedSessions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoggedSessionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetLoggedSessions_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q7:ExceptionDetail" />
+  </wsdl:message>
+  <wsdl:portType name="ICacheWCFContract">
+    <wsdl:operation name="UpdateSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/UpdateSession" message="tns:ICacheWCFContract_UpdateSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/UpdateSessionResponse" message="tns:ICacheWCFContract_UpdateSession_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/UpdateSessionExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_UpdateSession_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/AddSession" message="tns:ICacheWCFContract_AddSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/AddSessionResponse" message="tns:ICacheWCFContract_AddSession_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/AddSessionExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_AddSession_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/GetSessionByUsername" message="tns:ICacheWCFContract_GetSessionByUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/GetSessionByUsernameResponse" message="tns:ICacheWCFContract_GetSessionByUsername_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/GetSessionByUsernameExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_GetSessionByUsername_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionsByUsernamesArray">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/GetSessionsByUsernamesArray" message="tns:ICacheWCFContract_GetSessionsByUsernamesArray_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/GetSessionsByUsernamesArrayResponse" message="tns:ICacheWCFContract_GetSessionsByUsernamesArray_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/GetSessionsByUsernamesArrayExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_GetSessionsByUsernamesArray_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessions">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/GetSessions" message="tns:ICacheWCFContract_GetSessions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/GetSessionsResponse" message="tns:ICacheWCFContract_GetSessions_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/GetSessionsExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_GetSessions_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSessionByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/RemoveSessionByUsername" message="tns:ICacheWCFContract_RemoveSessionByUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/RemoveSessionByUsernameResponse" message="tns:ICacheWCFContract_RemoveSessionByUsername_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/RemoveSessionByUsernameExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_RemoveSessionByUsername_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedSessions">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/GetLoggedSessions" message="tns:ICacheWCFContract_GetLoggedSessions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/GetLoggedSessionsResponse" message="tns:ICacheWCFContract_GetLoggedSessions_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/GetLoggedSessionsExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_GetLoggedSessions_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ICacheWCFContract" type="tns:ICacheWCFContract">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateSession">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/UpdateSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddSession">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/AddSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionByUsername">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/GetSessionByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionsByUsernamesArray">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/GetSessionsByUsernamesArray" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessions">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/GetSessions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSessionByUsername">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/RemoveSessionByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggedSessions">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/GetLoggedSessions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CacheWCFContractProxy">
+    <wsdl:port name="BasicHttpBinding_ICacheWCFContract" binding="tns:BasicHttpBinding_ICacheWCFContract">
+      <soap:address location="http://localhost:8080/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
