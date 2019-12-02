@@ -1,14 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E128A482-2173-4AF9-9ED3-CA512CCDBFC2}</ProjectGuid>
+    <ProjectGuid>9816167a-e0b5-4262-ba59-54f5b1a2c840</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HardwareInventoryService.Modules.Authorization.Logic</RootNamespace>
-    <AssemblyName>HardwareInventoryService.Modules.Authorization.Logic</AssemblyName>
+    <RootNamespace>HardwareInventoryService</RootNamespace>
+    <AssemblyName>HardwareInventoryService</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,30 +31,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System"/>
+    
+    <Reference Include="System.Core"/>
+    <Reference Include="System.Xml.Linq"/>
+    <Reference Include="System.Data.DataSetExtensions"/>
+    
+    
+    <Reference Include="Microsoft.CSharp"/>
+    
+    <Reference Include="System.Data"/>
+    
+    <Reference Include="System.Net.Http"/>
+    
+    <Reference Include="System.Xml"/>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\StringContainer.cs" />
-    <Compile Include="Interfaces\IAuthInterface.cs" />
-    <Compile Include="Logic\AuthInterface.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HardwareInventoryService.Models\HardwareInventoryService.Models.csproj">
-      <Project>{D7DFDD57-9D23-4C95-A9D3-DAA162524C89}</Project>
-      <Name>HardwareInventoryService.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HardwareInventoryService.ServicesReferences\HardwareInventoryService.ServicesReferences.csproj">
-      <Project>{7930E281-F196-483D-969D-F2EDAC3527B1}</Project>
-      <Name>HardwareInventoryService.ServicesReferences</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-</Project>
+ </Project>

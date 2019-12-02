@@ -1,6 +1,7 @@
 ﻿using HardwareInventoryService.Models.Attributes;
 using HardwareInventoryService.Models.Models.Authorization;
 using HardwareInventoryService.Modules.Authorization.Logic.Interfaces;
+using HardwareInventoryService.ServicesReferences.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,16 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
 {
     public class AuthInterface : IAuthInterface
     {
+        private readonly ICacheService _cacheWCF;
+
         public async Task<Session> Authorize(Session authData)
         {
             if (!this.ValidateUserData(authData))
             {
-                //var sessionFromCache = await this.GetSessionFromCache(authData);
+                var findSessionFromCache = await this.GetSessionFromCache(authData);
             }
+
+            var sessionFromCache = await this.GetSessionFromCache(authData);
             return authData;
         }
 
@@ -33,6 +38,21 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
         private bool ValidateUserData(Session authData)
         {
             return authData != null && !string.IsNullOrEmpty(authData.Username) && !string.IsNullOrEmpty(authData.Password);
+        }
+
+        public virtual async Task<Session> GetSessionFromCache(Session authData)
+        {
+            Session session = null;
+            try
+            {
+                var wcfSession = await this._cacheWCF.GetSessionByUsernameAsync(authData.Username);
+                //session = this._mapper.Map<Session>(wcfSession);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return session;
         }
     }
 }
