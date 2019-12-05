@@ -1,6 +1,7 @@
 ﻿using HardwareInventoryService.Models.Attributes;
 using HardwareInventoryService.Models.Exceptions;
 using HardwareInventoryService.Models.Models.Authorization;
+using HardwareInventoryService.Models.Models.Enums;
 using HardwareInventoryService.Modules.Authorization.Logic.Interfaces;
 using HardwareInventoryService.ServicesReferences.Contracts;
 using System;
@@ -15,26 +16,65 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
     {
         private readonly ICacheService _cacheWCF;
 
+        private readonly IAuthorizationConfigurationRepository _configurationRepository;
+
+        private readonly IJWTService _jwtService;
+
         public async Task<Session> Authorize(Session authData)
         {
+            // validate user data
             if (!this.ValidateUserData(authData))
             {
 
             }
 
+            // check whether user is in database
+
+
+
+
+            // get session from cache by username
+            var configuration = this._configurationRepository.Get();
+
             var sessionFromCache = await this.GetSessionFromCache(authData);
 
-            if (sessionFromCache != null && sessionFromCache.FailedLoginAttempts.Count >= 5)
+            if (sessionFromCache != null && sessionFromCache.FailedLoginAttempts.Count >= configuration.MaximumLoginFailures)
             {
-                if (sessionFromCache.FailedLoginAttempts.Max() > DateTime.Now.AddHours(-(5)))
+                if (sessionFromCache.FailedLoginAttempts.Max() > DateTime.Now.AddHours(-(configuration.AccountBlockTime)))
                 {
                     throw new SessionException(
-                            $"Account blocked till {sessionFromCache.FailedLoginAttempts.Max().AddHours(conf.AccountBlockTime)}",
+                            $"Account blocked till {sessionFromCache.FailedLoginAttempts.Max().AddHours(configuration.AccountBlockTime)}",
                             ErrorCode.AccountBlocked,
-                            sessionFromCache.FailedLoginAttempts.Max().AddHours(conf.AccountBlockTime));
+                            sessionFromCache.FailedLoginAttempts.Max().AddHours(configuration.AccountBlockTime));
                 }
             }
-                return authData;
+
+            if (sessionFromCache?.FailedLoginAttempts != null)
+            {
+                authData.FailedLoginAttempts = sessionFromCache?.FailedLoginAttempts;
+            }
+            else
+            {
+                authData.FailedLoginAttempts = new List<DateTime>();
+            }
+
+            // generate json web tokens
+            this._jwtService.SecretKey = configuration.JWTSecretKey;
+            var jwtContainerModel = this._jwtService.CreateContainer(authData);
+            authData.Token = this._jwtService.GenerateToken(jwtContainerModel);
+            authData.TokenValidity = DateTime.Now.AddMinutes(jwtContainerModel.ExpireMinutes);
+
+
+            // cleanup the failed login attempts
+            if (authData.FailedLoginAttempts == null)
+                authData.FailedLoginAttempts = new List<DateTime>();
+            else authData.FailedLoginAttempts.Clear();
+
+
+            // add session to cache
+            await this._cacheWCF.AddSessionAsync(authData);
+
+            return authData;
         }
 
         public async Task<bool> ChangePassword(string username, [HashDataForLog] string password, [HashDataForLog] string newPassword)
