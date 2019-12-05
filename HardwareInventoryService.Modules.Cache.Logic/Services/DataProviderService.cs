@@ -8,19 +8,37 @@ using System.Threading.Tasks;
 
 namespace HardwareInventoryService.Modules.Cache.Logic.Services
 {
-    public class DataProviderService
+    public class DataProviderService : IDataProviderService
     {
         HardwareInventoryEntities context = new HardwareInventoryEntities();
 
-        ISessionRepository sessionRepository;
+        ISessionRepository _sessionRepository;
+
+        IUserRepository _userRepository;
+
+        public DataProviderService(ISessionRepository sessionRepository, IUserRepository userRepository)
+        {
+            this._sessionRepository = sessionRepository;
+            this._userRepository = userRepository;
+        }
 
         public async Task GetUsers()
         {
-            //return await Task.Run(() =>
-            //{
-            //    var users = this.context.Users.ToList();
-            //    //users.ForEach(x => this.sessionRepository.AddSaved(x));
-            //});
+            List<Users> users = new List<Users>();
+
+            await Task.Run(() =>
+            {
+                users = this.context.Users.ToList();
+            });
+
+            var mappedUsers = Helpers.Automapper.TransformsUsersFromDataBase(users);
+
+            mappedUsers.ForEach(x => this._userRepository.Add(x));
         }
+    }
+
+    public interface IDataProviderService
+    {
+        Task GetUsers();
     }
 }

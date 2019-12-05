@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="464beeec74e34a909dc4cc4b570f14ff" Name="Diagram1">
         <EntityTypeShape EntityType="HardwareInventoryModel.Users" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HardwareInventoryModel.Sessions" Width="1.5" PointX="3.875" PointY="0.625" />
+        <AssociationConnector Association="HardwareInventoryModel.FK_Sessions_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

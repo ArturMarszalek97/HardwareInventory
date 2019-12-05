@@ -7,6 +7,7 @@ using HardwareInventoryService.Modules.Cache.Logic.Interfaces;
 using HardwareInventoryService.Modules.Cache.Logic.IRepositories;
 using HardwareInventoryService.Modules.Cache.Logic.Logic;
 using HardwareInventoryService.Modules.Cache.Logic.Repositories;
+using HardwareInventoryService.Modules.Cache.Logic.Services;
 using HardwareInventoryService.ServicesReferences.Contracts;
 using HardwareInventoryService.ServicesReferences.Interceptors;
 using HardwareInventoryService.ServicesReferences.Services;
@@ -25,6 +26,8 @@ namespace HardwareInventoryService.Modules.Cache.Service
         private static ILoggerService _logger;
 
         private static CacheService _cacheService;
+
+        private static IDataProviderService _dataProviderService;
 
         static void Main(string[] args)
         {
@@ -60,6 +63,8 @@ namespace HardwareInventoryService.Modules.Cache.Service
 
                 ServiceBase[] ServicesToRun;
                 _cacheService = container.Resolve<CacheService>();
+                var dataProviderService = container.Resolve<IDataProviderService>();
+                _dataProviderService = dataProviderService;
                 //AppDomain.CurrentDomain.UnhandledException += MainHandler;
                 ServicesToRun = new ServiceBase[]
                 {
@@ -77,6 +82,7 @@ namespace HardwareInventoryService.Modules.Cache.Service
                     //SetConsoleCtrlHandler(_consoleHandler, true);
 
                     _cacheService.Start();
+                    _dataProviderService.GetUsers();
 
                     Console.WriteLine("Press any key to stop...");
                     Console.ReadKey(true);
@@ -109,6 +115,8 @@ namespace HardwareInventoryService.Modules.Cache.Service
 
             builder.RegisterType<SessionRepository>().As<ISessionRepository>().SingleInstance();
 
+            builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
+
             builder.RegisterType<CacheLogicService>().As<ICacheLogicService>()
                 .SingleInstance()
                 .EnableInterfaceInterceptors()
@@ -117,6 +125,9 @@ namespace HardwareInventoryService.Modules.Cache.Service
             builder.RegisterType<CacheWCFContract>().As<ICacheWCFContract>().SingleInstance().EnableClassInterceptors();
 
             builder.RegisterType<CacheService>().SingleInstance().EnableClassInterceptors().InterceptedBy(typeof(MethodLoggingInterceptor));
+
+            builder.RegisterType<DataProviderService>().As<IDataProviderService>().SingleInstance().EnableInterfaceInterceptors()
+                .InterceptedBy(typeof(MethodLoggingInterceptor));
 
             return builder.Build();
         }

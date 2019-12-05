@@ -1,4 +1,5 @@
 ﻿using HardwareInventoryService.Models.Attributes;
+using HardwareInventoryService.Models.Exceptions;
 using HardwareInventoryService.Models.Models.Authorization;
 using HardwareInventoryService.Modules.Authorization.Logic.Interfaces;
 using HardwareInventoryService.ServicesReferences.Contracts;
@@ -18,11 +19,22 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
         {
             if (!this.ValidateUserData(authData))
             {
-                var findSessionFromCache = await this.GetSessionFromCache(authData);
+
             }
 
             var sessionFromCache = await this.GetSessionFromCache(authData);
-            return authData;
+
+            if (sessionFromCache != null && sessionFromCache.FailedLoginAttempts.Count >= 5)
+            {
+                if (sessionFromCache.FailedLoginAttempts.Max() > DateTime.Now.AddHours(-(5)))
+                {
+                    throw new SessionException(
+                            $"Account blocked till {sessionFromCache.FailedLoginAttempts.Max().AddHours(conf.AccountBlockTime)}",
+                            ErrorCode.AccountBlocked,
+                            sessionFromCache.FailedLoginAttempts.Max().AddHours(conf.AccountBlockTime));
+                }
+            }
+                return authData;
         }
 
         public async Task<bool> ChangePassword(string username, [HashDataForLog] string password, [HashDataForLog] string newPassword)
