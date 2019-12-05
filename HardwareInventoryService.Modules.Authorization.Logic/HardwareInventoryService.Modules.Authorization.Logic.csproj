@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="Helpers\StringContainer.cs" />
     <Compile Include="Interfaces\IAuthInterface.cs" />
+    <Compile Include="Interfaces\IAuthorizationConfigurationRepository.cs" />
     <Compile Include="Logic\AuthInterface.cs" />
+    <Compile Include="Logic\AuthorizationConfigurationRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -45,6 +45,7 @@
     <Compile Include="Attributes\HashDataForLogAttribute.cs" />
     <Compile Include="Exceptions\SessionException.cs" />
     <Compile Include="Helpers\CommonContainer.cs" />
+    <Compile Include="Models\Authorization\AuthorizationModuleConfiguration.cs" />
     <Compile Include="Models\Authorization\IAuthCacheModel.cs" />
     <Compile Include="Models\Authorization\IUserCacheModel.cs" />
     <Compile Include="Models\Authorization\Session.cs" />
