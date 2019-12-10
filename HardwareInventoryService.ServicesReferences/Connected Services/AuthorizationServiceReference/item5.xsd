@@ -3,8 +3,10 @@
   <xs:import schemaLocation="http://localhost:8070/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models.Enums" />
   <xs:complexType name="ExceptionDetail">
     <xs:sequence>
+      <xs:element minOccurs="0" name="BlockedTill" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ExceptionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoginAttempts" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Result" type="xs:boolean" />
       <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models.Enums" minOccurs="0" name="Status" type="q1:ErrorCode" />

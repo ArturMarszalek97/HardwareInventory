@@ -112,6 +112,8 @@ namespace HardwareInventoryService.Modules.Cache.Service
                 .WithParameter("applicationName", "CacheService").SingleInstance();
 
             builder.RegisterType<MethodLoggingInterceptor>().As<MethodLoggingInterceptor>();
+            builder.RegisterType<ExceptionLoggingInterceptor>().As<ExceptionLoggingInterceptor>();
+            builder.RegisterType<TimeMeasuringInterceptor>().As<TimeMeasuringInterceptor>();
 
             builder.RegisterType<SessionRepository>().As<ISessionRepository>().SingleInstance();
 
@@ -127,7 +129,9 @@ namespace HardwareInventoryService.Modules.Cache.Service
             builder.RegisterType<CacheService>().SingleInstance().EnableClassInterceptors().InterceptedBy(typeof(MethodLoggingInterceptor));
 
             builder.RegisterType<DataProviderService>().As<IDataProviderService>().SingleInstance().EnableInterfaceInterceptors()
-                .InterceptedBy(typeof(MethodLoggingInterceptor));
+                .InterceptedBy(typeof(MethodLoggingInterceptor))
+                .InterceptedBy(typeof(ExceptionLoggingInterceptor))
+                .InterceptedBy(typeof(TimeMeasuringInterceptor));
 
             return builder.Build();
         }

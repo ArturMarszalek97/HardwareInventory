@@ -14,11 +14,21 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
 {
     public class AuthInterface : IAuthInterface
     {
+        private readonly ILoggerService _logger;
+
         private readonly ICacheService _cacheWCF;
 
         private readonly IAuthorizationConfigurationRepository _configurationRepository;
 
         private readonly IJWTService _jwtService;
+
+        public AuthInterface(ILoggerService logger, ICacheService cacheWCF, IAuthorizationConfigurationRepository configurationRepository, IJWTService jwtService)
+        {
+            this._logger = logger;
+            this._cacheWCF = cacheWCF;
+            this._configurationRepository = configurationRepository;
+            this._jwtService = jwtService;
+        }
 
         public async Task<Session> Authorize(Session authData)
         {

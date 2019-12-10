@@ -10,6 +10,7 @@ using HardwareInventoryService.ServicesReferences.Services;
 using NLog;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
@@ -85,14 +86,27 @@ namespace HardwareInventoryService.Modules.Authorization.Service
             var container = new ContainerBuilder();
 
             container.RegisterType<MethodLoggingInterceptor>().As<MethodLoggingInterceptor>();
+            container.RegisterType<ExceptionLoggingInterceptor>().As<ExceptionLoggingInterceptor>();
+            container.RegisterType<TimeMeasuringInterceptor>().As<TimeMeasuringInterceptor>();
 
             container.RegisterType<AuthorizationWCFContract>().AsImplementedInterfaces().SingleInstance().EnableClassInterceptors();
+            container.RegisterType<AuthorizationConfigurationRepository>().AsImplementedInterfaces().SingleInstance();
+
+            container.RegisterType<JWTService>().AsImplementedInterfaces().SingleInstance()
+                .WithParameter("secretKey", ConfigurationManager.AppSettings["JWTSecretKey"]).EnableInterfaceInterceptors()
+                .InterceptedBy(typeof(MethodLoggingInterceptor));
+
+            container.RegisterType<CacheService>().AsImplementedInterfaces().SingleInstance().EnableInterfaceInterceptors()
+                .InterceptedBy(typeof(MethodLoggingInterceptor));
 
             container.RegisterType<LoggerService>().AsImplementedInterfaces()
                 .WithParameter("applicationName", StringContainer.ApplicationName)
                 .SingleInstance();
 
-            container.RegisterType<AuthorizationService>().SingleInstance().EnableClassInterceptors().InterceptedBy(typeof(MethodLoggingInterceptor));
+            container.RegisterType<AuthorizationService>().SingleInstance().EnableClassInterceptors()
+                .InterceptedBy(typeof(MethodLoggingInterceptor))
+                .InterceptedBy(typeof(ExceptionLoggingInterceptor))
+                .InterceptedBy(typeof(TimeMeasuringInterceptor));
 
             container.RegisterType<AuthInterface>().AsImplementedInterfaces().SingleInstance().EnableInterfaceInterceptors().InterceptedBy(typeof(MethodLoggingInterceptor));
 

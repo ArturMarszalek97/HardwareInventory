@@ -67,6 +67,7 @@
     <Compile Include="Contracts\ILoggerService.cs" />
     <Compile Include="Interceptors\ExceptionLoggingInterceptor.cs" />
     <Compile Include="Interceptors\MethodLoggingInterceptor.cs" />
+    <Compile Include="Interceptors\TimeMeasuringInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthorizationService.cs" />
     <Compile Include="Services\CacheService.cs" />
@@ -75,6 +76,9 @@
   <ItemGroup>
     <None Include="Connected Services\AuthorizationServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\AuthorizationServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\AuthorizationServiceReference\HardwareInventoryService.ServicesReferences.AuthorizationServiceReference.Session.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\AuthorizationServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
