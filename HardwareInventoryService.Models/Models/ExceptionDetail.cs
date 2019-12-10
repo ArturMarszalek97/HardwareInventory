@@ -26,6 +26,12 @@ namespace HardwareInventoryService.Models.Models
         [DataMember]
         private string ExceptionType;
 
+        [DataMember]
+        public DateTime? BlockedTill;
+
+        [DataMember]
+        public int? LoginAttempts;
+
         public ExceptionDetail()
         {
             this.Result = false;
@@ -50,6 +56,13 @@ namespace HardwareInventoryService.Models.Models
             this(result, message, description, status)
         {
             this.ExceptionType = exceptionType.FullName;
+        }
+
+        public ExceptionDetail(bool result, string message, string description, ErrorCode status, Type exceptionType, int? loginAttempts, DateTime? blockedTill) :
+            this(result, message, description, status, exceptionType)
+        {
+            this.BlockedTill = blockedTill;
+            this.LoginAttempts = loginAttempts;
         }
     }
 }

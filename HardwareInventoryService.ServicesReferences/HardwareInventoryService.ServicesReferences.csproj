@@ -65,6 +65,7 @@
     <Compile Include="Contracts\IAuthorizationService.cs" />
     <Compile Include="Contracts\ICacheService.cs" />
     <Compile Include="Contracts\ILoggerService.cs" />
+    <Compile Include="Interceptors\ExceptionLoggingInterceptor.cs" />
     <Compile Include="Interceptors\MethodLoggingInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthorizationService.cs" />

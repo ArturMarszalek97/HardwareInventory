@@ -23,14 +23,14 @@ namespace HardwareInventoryService.ServicesReferences.Interceptors
         {
             this._loggerService.LogMessage($"Method {invocation.Method.DeclaringType?.Name}.{invocation.Method.Name} invoked", LogLevel.Info);
 
-            //var copy = invocation.Arguments.DeepClone();
+            var parameters = invocation.Arguments.ToList();
             //var parameters = Hashing.HashParameters(copy, invocation.Method);
 
             this._loggerService.LogMessage(new LogMessage
             {
                 ClassName = invocation.TargetType.Name,
                 MethodName = invocation.Method.Name,
-                //Parameters = parameters,
+                Parameters = parameters,
             }, LogLevel.Debug);
 
             invocation.Proceed();

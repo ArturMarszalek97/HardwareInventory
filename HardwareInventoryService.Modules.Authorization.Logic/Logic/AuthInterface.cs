@@ -23,9 +23,10 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
         public async Task<Session> Authorize(Session authData)
         {
             // validate user data
-            if (!this.ValidateUserData(authData))
+            if (this.ValidateUserData(authData))
             {
-
+                // user authorization data is not valid.
+                throw new ArgumentNullException(nameof(authData));
             }
 
             // check whether user is in database

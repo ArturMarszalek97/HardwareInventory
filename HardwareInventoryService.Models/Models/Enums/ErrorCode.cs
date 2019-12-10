@@ -10,6 +10,7 @@ namespace HardwareInventoryService.Models.Models.Enums
     {
         ConnectionError = 1000,
         ArgumentNullError = 1001,
+        NotFoundInCache = 3001,
         SessionError = 4001,
         AccountBlocked = 4002,
         PassAlreadyUsedError = 4003,
