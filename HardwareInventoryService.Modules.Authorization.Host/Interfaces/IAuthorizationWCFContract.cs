@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using ExceptionDetail = HardwareInventoryService.Models.Models.ExceptionDetail;
+using Session = HardwareInventoryService.Models.Models.Authorization.Session;
 using System.Text;
 using System.Threading.Tasks;
 

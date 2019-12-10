@@ -76,9 +76,6 @@
   <ItemGroup>
     <None Include="Connected Services\AuthorizationServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\AuthorizationServiceReference\configuration.svcinfo" />
-    <None Include="Connected Services\AuthorizationServiceReference\HardwareInventoryService.ServicesReferences.AuthorizationServiceReference.Session.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\AuthorizationServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

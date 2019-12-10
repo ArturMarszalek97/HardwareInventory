@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Session = HardwareInventoryService.Models.Models.Authorization.Session;
 
 namespace HardwareInventoryService.Modules.Authorization.Logic.Interfaces
 {
