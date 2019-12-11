@@ -129,6 +129,11 @@ namespace HardwareInventoryService.Modules.Cache.Service
             builder.RegisterType<SessionRepository>().As<ISessionRepository>().SingleInstance();
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
 
+            builder.RegisterType<DataProviderService>().As<IDataProviderService>().SingleInstance().EnableInterfaceInterceptors()
+                    .InterceptedBy(typeof(MethodLoggingInterceptor))
+                    .InterceptedBy(typeof(ExceptionLoggingInterceptor))
+                    .InterceptedBy(typeof(TimeMeasuringInterceptor));
+
             builder.RegisterType<CacheLogicService>().As<ICacheLogicService>()
                 .SingleInstance()
                 .EnableInterfaceInterceptors()
