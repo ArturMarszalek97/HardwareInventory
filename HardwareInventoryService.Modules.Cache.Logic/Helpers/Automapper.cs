@@ -17,7 +17,8 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Helpers
             {
                 cfg.CreateMap<Users, User>()
                     .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username))
-                    .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.password));
+                    .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
+                    .ForMember(dest => dest.AccountPhoto, opt => opt.MapFrom(src => src.Photo));
             });
 
             var mapper = config.CreateMapper();

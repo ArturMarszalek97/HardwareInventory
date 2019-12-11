@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Autofac.Integration.Wcf;
+using HardwareInventoryService.DAO;
 using HardwareInventoryService.Modules.Cache.Host.Interfaces;
 using HardwareInventoryService.Modules.Cache.Host.Services;
 using HardwareInventoryService.Modules.Cache.Logic.Interfaces;
@@ -14,10 +15,12 @@ using HardwareInventoryService.ServicesReferences.Services;
 using NLog;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace HardwareInventoryService.Modules.Cache.Service
 {
@@ -83,6 +86,14 @@ namespace HardwareInventoryService.Modules.Cache.Service
 
                     _cacheService.Start();
                     _dataProviderService.GetUsers();
+
+                    //var file = File.ReadAllBytes("C:/Users/Artur/Desktop/pexels-photo-247885.jpeg");
+                    //Users users = new Users();
+                    //users.Username = "login";
+                    //users.Password = "haslo";
+                    //users.Photo = file;
+
+                    //_dataProviderService.AddUser(users);
 
                     Console.WriteLine("Press any key to stop...");
                     Console.ReadKey(true);

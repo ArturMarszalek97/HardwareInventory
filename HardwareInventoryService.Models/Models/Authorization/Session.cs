@@ -29,6 +29,9 @@ namespace HardwareInventoryService.Models.Models.Authorization
         [DataMember]
         public DateTime? TokenValidity { get; set; }
 
+        [DataMember]
+        public byte[] AccountPhoto { get; set; }
+
         public Session()
         {
             this.FailedLoginAttempts = new List<DateTime>();

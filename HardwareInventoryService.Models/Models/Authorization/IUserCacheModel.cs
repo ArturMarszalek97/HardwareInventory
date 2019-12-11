@@ -11,5 +11,7 @@ namespace HardwareInventoryService.Models.Models.Authorization
         string Username { get; set; }
 
         string Password { get; set; }
+
+        byte[] AccountPhoto { get; set; }
     }
 }

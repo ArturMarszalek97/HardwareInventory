@@ -22,6 +22,12 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
             this._userRepository = userRepository;
         }
 
+        public void AddUser(Users user)
+        {
+            this.context.Users.Add(user);
+            this.context.SaveChanges();
+        }
+
         public async Task GetUsers()
         {
             List<Users> users = new List<Users>();
@@ -40,5 +46,7 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
     public interface IDataProviderService
     {
         Task GetUsers();
+
+        void AddUser(Users user);
     }
 }

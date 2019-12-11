@@ -39,7 +39,7 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
                 throw new ArgumentNullException(nameof(authData));
             }
 
-            await this._cacheWCF.GetUserByUsernameAsync(authData.Username);
+            var user = await this._cacheWCF.GetUserByUsernameAsync(authData.Username);
 
             // get session from cache by username
             var configuration = this._configurationRepository.Get();
@@ -65,6 +65,8 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
             {
                 authData.FailedLoginAttempts = new List<DateTime>();
             }
+
+            authData.AccountPhoto = user.AccountPhoto;
 
             // generate json web tokens
             this._jwtService.SecretKey = configuration.JWTSecretKey;
