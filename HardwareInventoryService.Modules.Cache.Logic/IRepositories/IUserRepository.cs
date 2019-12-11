@@ -12,8 +12,8 @@ namespace HardwareInventoryService.Modules.Cache.Logic.IRepositories
     {
         HashSet<CacheObject<IUserCacheModel>> Objects { get; set; }
 
-        void Add(User user);
+        void AddUser(User user);
 
-        User GetByUsername(string username);
+        User GetUserByUsername(string username);
     }
 }

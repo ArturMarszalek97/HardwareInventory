@@ -18,7 +18,7 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
         {
             this._configuration = new AuthorizationModuleConfiguration();
             this._configuration.AccountBlockTime = 5;
-            this._configuration.JWTSecretKey = "klucz";
+            this._configuration.JWTSecretKey = "TW9zaGVFcmV6UHJpdmF0ZUtleQ==";
             this._configuration.MaximumLoginFailures = 3;
         }
 

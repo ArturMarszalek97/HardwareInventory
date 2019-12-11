@@ -33,7 +33,7 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
 
             var mappedUsers = Helpers.Automapper.TransformsUsersFromDataBase(users);
 
-            mappedUsers.ForEach(x => this._userRepository.Add(x));
+            mappedUsers.ForEach(x => this._userRepository.AddUser(x));
         }
     }
 

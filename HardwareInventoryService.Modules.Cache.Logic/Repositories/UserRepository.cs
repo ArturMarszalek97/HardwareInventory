@@ -39,7 +39,7 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Repositories
             this._usersSet = new HashSet<CacheObject<IUserCacheModel>>();
         }
 
-        public void Add(User user)
+        public void AddUser(User user)
         {
             lock (this._usersSetLock)
             {
@@ -48,7 +48,7 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Repositories
             }
         }
 
-        public User GetByUsername(string username)
+        public User GetUserByUsername(string username)
         {
             lock (this._usersSetLock)
             {

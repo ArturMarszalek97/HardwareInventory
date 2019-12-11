@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Autofac.Integration.Wcf;
+using HardwareInventoryService.DAO;
 using HardwareInventoryService.Modules.Authorization.Host.Services;
 using HardwareInventoryService.Modules.Authorization.Logic.Helpers;
 using HardwareInventoryService.Modules.Authorization.Logic.Logic;
@@ -29,7 +30,9 @@ namespace HardwareInventoryService.Modules.Authorization.Service
             var iocContainer = BuildIOCContainer();
             AutofacHostFactory.Container = iocContainer;
             var loggerService = iocContainer.Resolve<ILoggerService>();
+            var context = iocContainer.Resolve<HardwareInventoryEntities>();
             _logger = loggerService;
+            DataBaseContext.Context = context;
 
             // self service installer/uninstaller
             if (args != null && args.Length == 1
@@ -89,6 +92,9 @@ namespace HardwareInventoryService.Modules.Authorization.Service
             container.RegisterType<ExceptionLoggingInterceptor>().As<ExceptionLoggingInterceptor>();
             container.RegisterType<TimeMeasuringInterceptor>().As<TimeMeasuringInterceptor>();
 
+            container.RegisterType<HardwareInventoryEntities>().AsSelf()
+                .InstancePerLifetimeScope();
+
             container.RegisterType<AuthorizationWCFContract>().AsImplementedInterfaces().SingleInstance().EnableClassInterceptors();
             container.RegisterType<AuthorizationConfigurationRepository>().AsImplementedInterfaces().SingleInstance();
 
@@ -108,7 +114,10 @@ namespace HardwareInventoryService.Modules.Authorization.Service
                 .InterceptedBy(typeof(ExceptionLoggingInterceptor))
                 .InterceptedBy(typeof(TimeMeasuringInterceptor));
 
-            container.RegisterType<AuthInterface>().AsImplementedInterfaces().SingleInstance().EnableInterfaceInterceptors().InterceptedBy(typeof(MethodLoggingInterceptor));
+            container.RegisterType<AuthInterface>().AsImplementedInterfaces().SingleInstance().EnableInterfaceInterceptors()
+                .InterceptedBy(typeof(MethodLoggingInterceptor))
+                .InterceptedBy(typeof(ExceptionLoggingInterceptor))
+                .InterceptedBy(typeof(TimeMeasuringInterceptor));
 
             return container.Build();
         }

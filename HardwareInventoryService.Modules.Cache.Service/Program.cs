@@ -116,7 +116,6 @@ namespace HardwareInventoryService.Modules.Cache.Service
             builder.RegisterType<TimeMeasuringInterceptor>().As<TimeMeasuringInterceptor>();
 
             builder.RegisterType<SessionRepository>().As<ISessionRepository>().SingleInstance();
-
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
 
             builder.RegisterType<CacheLogicService>().As<ICacheLogicService>()

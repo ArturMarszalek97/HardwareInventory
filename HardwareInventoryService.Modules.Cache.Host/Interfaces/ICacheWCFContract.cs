@@ -11,6 +11,8 @@ namespace HardwareInventoryService.Modules.Cache.Host.Interfaces
     [ServiceContract]
     public interface ICacheWCFContract
     {
+        #region Session
+
         [OperationContract]
         [FaultContract(typeof(ExceptionDetail))]
         void UpdateSession(Session session);
@@ -38,5 +40,19 @@ namespace HardwareInventoryService.Modules.Cache.Host.Interfaces
         [OperationContract]
         [FaultContract(typeof(ExceptionDetail))]
         IEnumerable<Session> GetLoggedSessions();
+
+        #endregion
+
+        #region User
+
+        [OperationContract]
+        [FaultContract(typeof(ExceptionDetail))]
+        void AddUser(User user);
+
+        [OperationContract]
+        [FaultContract(typeof(ExceptionDetail))]
+        User GetUserByUsername(string username);
+
+        #endregion
     }
 }

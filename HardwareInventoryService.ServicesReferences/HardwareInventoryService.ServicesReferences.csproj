@@ -130,6 +130,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\HardwareInventoryService.Models.Models.Authorization.Session.datasource" />
+    <None Include="Properties\DataSources\HardwareInventoryService.Models.Models.Authorization.User.datasource" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

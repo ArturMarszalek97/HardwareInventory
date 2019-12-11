@@ -72,6 +72,24 @@
   <wsdl:message name="ICacheWCFContract_GetLoggedSessions_ExceptionDetailFault_FaultMessage">
     <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q7:ExceptionDetail" />
   </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_AddUser_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q8:ExceptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetUserByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByUsername" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetUserByUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetUserByUsername_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q9:ExceptionDetail" />
+  </wsdl:message>
   <wsdl:portType name="ICacheWCFContract">
     <wsdl:operation name="UpdateSession">
       <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/UpdateSession" message="tns:ICacheWCFContract_UpdateSession_InputMessage" />
@@ -107,6 +125,16 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/GetLoggedSessions" message="tns:ICacheWCFContract_GetLoggedSessions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/GetLoggedSessionsResponse" message="tns:ICacheWCFContract_GetLoggedSessions_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/GetLoggedSessionsExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_GetLoggedSessions_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/AddUser" message="tns:ICacheWCFContract_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/AddUserResponse" message="tns:ICacheWCFContract_AddUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/AddUserExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_AddUser_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/GetUserByUsername" message="tns:ICacheWCFContract_GetUserByUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/GetUserByUsernameResponse" message="tns:ICacheWCFContract_GetUserByUsername_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/GetUserByUsernameExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_GetUserByUsername_ExceptionDetailFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICacheWCFContract" type="tns:ICacheWCFContract">
@@ -185,6 +213,30 @@
     </wsdl:operation>
     <wsdl:operation name="GetLoggedSessions">
       <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/GetLoggedSessions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUsername">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/GetUserByUsername" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

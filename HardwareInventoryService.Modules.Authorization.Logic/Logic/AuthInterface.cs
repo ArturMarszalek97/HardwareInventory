@@ -2,6 +2,7 @@
 using HardwareInventoryService.Models.Exceptions;
 using HardwareInventoryService.Models.Models.Authorization;
 using HardwareInventoryService.Models.Models.Enums;
+using HardwareInventoryService.Modules.Authorization.Logic.Helpers;
 using HardwareInventoryService.Modules.Authorization.Logic.Interfaces;
 using HardwareInventoryService.ServicesReferences.Contracts;
 using System;
@@ -33,17 +34,12 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
 
         public async Task<Session> Authorize(Session authData)
         {
-            // validate user data
-            if (this.ValidateUserData(authData))
+            if (!this.ValidateUserData(authData))
             {
-                // user authorization data is not valid.
                 throw new ArgumentNullException(nameof(authData));
             }
 
-            // check whether user is in database
-
-
-
+            await this._cacheWCF.GetUserByUsernameAsync(authData.Username);
 
             // get session from cache by username
             var configuration = this._configurationRepository.Get();
@@ -110,6 +106,7 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
             try
             {
                 var wcfSession = await this._cacheWCF.GetSessionByUsernameAsync(authData.Username);
+                session = wcfSession;
                 //session = this._mapper.Map<Session>(wcfSession);
             }
             catch (Exception ex)

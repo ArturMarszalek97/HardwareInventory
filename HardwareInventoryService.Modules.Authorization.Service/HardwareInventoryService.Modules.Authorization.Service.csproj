@@ -109,6 +109,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HardwareInventoryService.DAO\HardwareInventoryService.DAO.csproj">
+      <Project>{B4FBAD6B-9D6E-4C22-98A7-DB8362F11D75}</Project>
+      <Name>HardwareInventoryService.DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HardwareInventoryService.Models\HardwareInventoryService.Models.csproj">
       <Project>{D7DFDD57-9D23-4C95-A9D3-DAA162524C89}</Project>
       <Name>HardwareInventoryService.Models</Name>

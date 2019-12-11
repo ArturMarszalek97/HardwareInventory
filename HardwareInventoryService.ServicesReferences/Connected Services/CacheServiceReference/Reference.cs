@@ -64,6 +64,20 @@ namespace HardwareInventoryService.ServicesReferences.CacheServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetLoggedSessions", ReplyAction="http://tempuri.org/ICacheWCFContract/GetLoggedSessionsResponse")]
         System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Authorization.Session[]> GetLoggedSessionsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/AddUser", ReplyAction="http://tempuri.org/ICacheWCFContract/AddUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/AddUserExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        void AddUser(HardwareInventoryService.Models.Models.Authorization.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/AddUser", ReplyAction="http://tempuri.org/ICacheWCFContract/AddUserResponse")]
+        System.Threading.Tasks.Task AddUserAsync(HardwareInventoryService.Models.Models.Authorization.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetUserByUsername", ReplyAction="http://tempuri.org/ICacheWCFContract/GetUserByUsernameResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetUserByUsernameExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        HardwareInventoryService.Models.Models.Authorization.User GetUserByUsername(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetUserByUsername", ReplyAction="http://tempuri.org/ICacheWCFContract/GetUserByUsernameResponse")]
+        System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Authorization.User> GetUserByUsernameAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -147,6 +161,22 @@ namespace HardwareInventoryService.ServicesReferences.CacheServiceReference {
         
         public System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Authorization.Session[]> GetLoggedSessionsAsync() {
             return base.Channel.GetLoggedSessionsAsync();
+        }
+        
+        public void AddUser(HardwareInventoryService.Models.Models.Authorization.User user) {
+            base.Channel.AddUser(user);
+        }
+        
+        public System.Threading.Tasks.Task AddUserAsync(HardwareInventoryService.Models.Models.Authorization.User user) {
+            return base.Channel.AddUserAsync(user);
+        }
+        
+        public HardwareInventoryService.Models.Models.Authorization.User GetUserByUsername(string username) {
+            return base.Channel.GetUserByUsername(username);
+        }
+        
+        public System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Authorization.User> GetUserByUsernameAsync(string username) {
+            return base.Channel.GetUserByUsernameAsync(username);
         }
     }
 }

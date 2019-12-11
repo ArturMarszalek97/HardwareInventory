@@ -25,9 +25,19 @@ namespace HardwareInventoryService.Modules.Cache.Host.Services
             this._cacheLogicService = cacheLogicService;
         }
 
+        public virtual void AddUser(User user)
+        {
+            this._cacheLogicService.AddUser(user);
+        }
+
         public virtual void AddSession(Session session)
         {
             this._cacheLogicService.AddSession(session);
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            return this._cacheLogicService.GetUserByUsername(username);
         }
 
         public virtual IEnumerable<Session> GetLoggedSessions()

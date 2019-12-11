@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HardwareInventoryService.Modules.Cache.Logic.Interfaces
 {
-    public interface ICacheLogicService : ISessionsLogic
+    public interface ICacheLogicService : ISessionsLogic, IUserLogic
     {
     }
 }
