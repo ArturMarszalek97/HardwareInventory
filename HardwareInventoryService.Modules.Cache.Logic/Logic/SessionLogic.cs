@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HardwareInventoryService.Modules.Cache.Logic.Logic
 {
-    public partial class CacheLogicService : ICacheLogicService
+    public partial class CacheLogicService : ISessionsLogic
     {
         private ISessionRepository _sessionRepo;
 

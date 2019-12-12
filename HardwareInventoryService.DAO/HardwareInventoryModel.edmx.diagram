@@ -8,6 +8,10 @@
         <EntityTypeShape EntityType="HardwareInventoryModel.Users" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HardwareInventoryModel.Sessions" Width="1.5" PointX="3.875" PointY="0.625" />
         <AssociationConnector Association="HardwareInventoryModel.FK_Sessions_Users" />
+        <EntityTypeShape EntityType="HardwareInventoryModel.Item" Width="1.5" PointX="4.25" PointY="2.875" />
+        <EntityTypeShape EntityType="HardwareInventoryModel.ItemCategory" Width="1.5" PointX="2" PointY="3.625" />
+        <AssociationConnector Association="HardwareInventoryModel.FK_Item_ItemCategory" />
+        <AssociationConnector Association="HardwareInventoryModel.FK_Item_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

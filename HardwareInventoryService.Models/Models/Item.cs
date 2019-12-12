@@ -21,9 +21,9 @@ namespace HardwareInventoryService.Models.Models
 
         public string Shop { get; set; }
 
-        public ItemCategory Category { get; set; }
+        public string Category { get; set; }
 
-        public List<Note> Notes { get; set; }
+        public string Note { get; set; }
 
         public int Warranty { get; set; }
     }

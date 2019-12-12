@@ -56,15 +56,19 @@
   <ItemGroup>
     <Compile Include="Helpers\Automapper.cs" />
     <Compile Include="Interfaces\ICacheLogicService.cs" />
+    <Compile Include="Interfaces\IItemLogic.cs" />
     <Compile Include="Interfaces\ISessionsLogic.cs" />
     <Compile Include="Interfaces\IUserLogic.cs" />
+    <Compile Include="IRepositories\IItemRepository.cs" />
     <Compile Include="IRepositories\ISessionRepository.cs" />
     <Compile Include="IRepositories\IUserRepository.cs" />
     <Compile Include="Logic\CacheLogicService.cs" />
     <Compile Include="Logic\CacheObject.cs" />
+    <Compile Include="Logic\ItemLogic.cs" />
     <Compile Include="Logic\SessionLogic.cs" />
     <Compile Include="Logic\UserLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ItemRepository.cs" />
     <Compile Include="Repositories\SessionRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\DataProviderService.cs" />

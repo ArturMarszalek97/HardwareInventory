@@ -27,5 +27,7 @@ namespace HardwareInventoryService.DAO
     
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Sessions> Sessions { get; set; }
+        public virtual DbSet<Item> Item { get; set; }
+        public virtual DbSet<ItemCategory> ItemCategory { get; set; }
     }
 }

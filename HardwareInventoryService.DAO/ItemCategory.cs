@@ -12,22 +12,17 @@ namespace HardwareInventoryService.DAO
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class ItemCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public ItemCategory()
         {
-            this.Sessions = new HashSet<Sessions>();
             this.Item = new HashSet<Item>();
         }
     
-        public int UserID { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public byte[] Photo { get; set; }
+        public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sessions> Sessions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item> Item { get; set; }
     }
