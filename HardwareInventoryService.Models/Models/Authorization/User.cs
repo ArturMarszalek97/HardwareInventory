@@ -8,8 +8,12 @@ namespace HardwareInventoryService.Models.Models.Authorization
 {
     public class User : IUserCacheModel
     {
+        public int UserID { get; set; }
+
         public string Username { get; set; }
+
         public string Password { get; set; }
+
         public byte[] AccountPhoto { get; set; }
     }
 }

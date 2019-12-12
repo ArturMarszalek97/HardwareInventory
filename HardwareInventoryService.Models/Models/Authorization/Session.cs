@@ -21,7 +21,7 @@ namespace HardwareInventoryService.Models.Models.Authorization
         public string Token { get; set; }
 
         [DataMember]
-        public string ConnectionId { get; set; }
+        public int UserId { get; set; }
 
         [DataMember]
         public List<DateTime> FailedLoginAttempts { get; set; }

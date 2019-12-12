@@ -12,7 +12,7 @@ namespace HardwareInventoryService.Models.Models.Authorization
 
         string Token { get; set; }
 
-        string ConnectionId { get; set; }
+        int UserId { get; set; }
 
         List<DateTime> FailedLoginAttempts { get; set; }
 

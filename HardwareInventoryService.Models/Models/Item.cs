@@ -11,6 +11,8 @@ namespace HardwareInventoryService.Models.Models
     {
         public int ItemID { get; set; }
 
+        public int UserID { get; set; }
+
         public string ItemName { get; set; }
 
         public float Price { get; set; }
