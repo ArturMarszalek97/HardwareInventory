@@ -25,6 +25,7 @@
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="28a1c31d-3780-4be7-a787-79cff249f577" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd0" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="e3afe8fb-fa79-4eb2-8457-b12c14cd5e67" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd4" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="1736ebdb-f7f8-4160-927b-4e668a562704" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd1" />
+    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="8ae9b0a1-b02c-4d94-99c3-652ed2e3eae7" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd5" />
     <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="865c1f1b-23f7-4506-ad45-c97f16690271" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd3" />
     <MetadataFile FileName="CacheWCFContractProxy.wsdl" MetadataType="Wsdl" ID="f23484a8-0029-4aca-9fdb-cc93e6c2b1da" SourceId="1" SourceUrl="http://localhost:8080/" />
     <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="4e7e1f5a-3904-4ae5-b625-9e7073265cb8" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd2" />

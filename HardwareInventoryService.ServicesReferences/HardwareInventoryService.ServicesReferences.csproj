@@ -82,6 +82,9 @@
     </None>
     <None Include="Connected Services\CacheServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\CacheServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\CacheServiceReference\item5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\CacheServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -131,6 +134,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\HardwareInventoryService.Models.Models.Authorization.Session.datasource" />
     <None Include="Properties\DataSources\HardwareInventoryService.Models.Models.Authorization.User.datasource" />
+    <None Include="Properties\DataSources\HardwareInventoryService.Models.Models.Item.datasource" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

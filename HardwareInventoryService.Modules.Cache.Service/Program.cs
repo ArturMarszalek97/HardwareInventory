@@ -85,8 +85,8 @@ namespace HardwareInventoryService.Modules.Cache.Service
                     //SetConsoleCtrlHandler(_consoleHandler, true);
 
                     _cacheService.Start();
-                    _dataProviderService.GetUsers();
-                    _dataProviderService.GetItems();
+                    GetData(_dataProviderService);
+                    
 
                     //var file = File.ReadAllBytes("C:/Users/Artur/Desktop/pexels-photo-247885.jpeg");
                     //Users users = new Users();
@@ -114,6 +114,12 @@ namespace HardwareInventoryService.Modules.Cache.Service
             }
 
             Environment.Exit(0);
+        }
+
+        private static async Task GetData(IDataProviderService dataProviderService)
+        {
+            await _dataProviderService.GetUsers();
+            await _dataProviderService.GetItems();
         }
 
         private static IContainer BuildIOCContainer()

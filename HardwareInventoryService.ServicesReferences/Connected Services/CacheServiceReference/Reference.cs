@@ -16,68 +16,82 @@ namespace HardwareInventoryService.ServicesReferences.CacheServiceReference {
     public interface ICacheWCFContract {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/UpdateSession", ReplyAction="http://tempuri.org/ICacheWCFContract/UpdateSessionResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/UpdateSessionExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/UpdateSessionExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
         void UpdateSession(HardwareInventoryService.Models.Models.Authorization.Session session);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/UpdateSession", ReplyAction="http://tempuri.org/ICacheWCFContract/UpdateSessionResponse")]
         System.Threading.Tasks.Task UpdateSessionAsync(HardwareInventoryService.Models.Models.Authorization.Session session);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/AddSession", ReplyAction="http://tempuri.org/ICacheWCFContract/AddSessionResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/AddSessionExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/AddSessionExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
         void AddSession(HardwareInventoryService.Models.Models.Authorization.Session session);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/AddSession", ReplyAction="http://tempuri.org/ICacheWCFContract/AddSessionResponse")]
         System.Threading.Tasks.Task AddSessionAsync(HardwareInventoryService.Models.Models.Authorization.Session session);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetSessionByUsername", ReplyAction="http://tempuri.org/ICacheWCFContract/GetSessionByUsernameResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetSessionByUsernameExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetSessionByUsernameExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
         HardwareInventoryService.Models.Models.Authorization.Session GetSessionByUsername(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetSessionByUsername", ReplyAction="http://tempuri.org/ICacheWCFContract/GetSessionByUsernameResponse")]
         System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Authorization.Session> GetSessionByUsernameAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetSessionsByUsernamesArray", ReplyAction="http://tempuri.org/ICacheWCFContract/GetSessionsByUsernamesArrayResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetSessionsByUsernamesArrayExceptionDetailFa" +
-            "ult", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetSessionsByUsernamesArrayExceptionDetailFa" +
+            "ult", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
         HardwareInventoryService.Models.Models.Authorization.Session[] GetSessionsByUsernamesArray(string[] username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetSessionsByUsernamesArray", ReplyAction="http://tempuri.org/ICacheWCFContract/GetSessionsByUsernamesArrayResponse")]
         System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Authorization.Session[]> GetSessionsByUsernamesArrayAsync(string[] username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetSessions", ReplyAction="http://tempuri.org/ICacheWCFContract/GetSessionsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetSessionsExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetSessionsExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
         HardwareInventoryService.Models.Models.Authorization.Session[] GetSessions();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetSessions", ReplyAction="http://tempuri.org/ICacheWCFContract/GetSessionsResponse")]
         System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Authorization.Session[]> GetSessionsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/RemoveSessionByUsername", ReplyAction="http://tempuri.org/ICacheWCFContract/RemoveSessionByUsernameResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/RemoveSessionByUsernameExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/RemoveSessionByUsernameExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
         void RemoveSessionByUsername(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/RemoveSessionByUsername", ReplyAction="http://tempuri.org/ICacheWCFContract/RemoveSessionByUsernameResponse")]
         System.Threading.Tasks.Task RemoveSessionByUsernameAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetLoggedSessions", ReplyAction="http://tempuri.org/ICacheWCFContract/GetLoggedSessionsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetLoggedSessionsExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetLoggedSessionsExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
         HardwareInventoryService.Models.Models.Authorization.Session[] GetLoggedSessions();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetLoggedSessions", ReplyAction="http://tempuri.org/ICacheWCFContract/GetLoggedSessionsResponse")]
         System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Authorization.Session[]> GetLoggedSessionsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/AddUser", ReplyAction="http://tempuri.org/ICacheWCFContract/AddUserResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/AddUserExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/AddUserExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
         void AddUser(HardwareInventoryService.Models.Models.Authorization.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/AddUser", ReplyAction="http://tempuri.org/ICacheWCFContract/AddUserResponse")]
         System.Threading.Tasks.Task AddUserAsync(HardwareInventoryService.Models.Models.Authorization.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetUserByUsername", ReplyAction="http://tempuri.org/ICacheWCFContract/GetUserByUsernameResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.ServiceModel.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetUserByUsernameExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetUserByUsernameExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
         HardwareInventoryService.Models.Models.Authorization.User GetUserByUsername(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetUserByUsername", ReplyAction="http://tempuri.org/ICacheWCFContract/GetUserByUsernameResponse")]
         System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Authorization.User> GetUserByUsernameAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/AddItem", ReplyAction="http://tempuri.org/ICacheWCFContract/AddItemResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/AddItemExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
+        void AddItem(HardwareInventoryService.Models.Models.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/AddItem", ReplyAction="http://tempuri.org/ICacheWCFContract/AddItemResponse")]
+        System.Threading.Tasks.Task AddItemAsync(HardwareInventoryService.Models.Models.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetItems", ReplyAction="http://tempuri.org/ICacheWCFContract/GetItemsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetItemsExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
+        HardwareInventoryService.Models.Models.Item[] GetItems();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetItems", ReplyAction="http://tempuri.org/ICacheWCFContract/GetItemsResponse")]
+        System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Item[]> GetItemsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -177,6 +191,22 @@ namespace HardwareInventoryService.ServicesReferences.CacheServiceReference {
         
         public System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Authorization.User> GetUserByUsernameAsync(string username) {
             return base.Channel.GetUserByUsernameAsync(username);
+        }
+        
+        public void AddItem(HardwareInventoryService.Models.Models.Item item) {
+            base.Channel.AddItem(item);
+        }
+        
+        public System.Threading.Tasks.Task AddItemAsync(HardwareInventoryService.Models.Models.Item item) {
+            return base.Channel.AddItemAsync(item);
+        }
+        
+        public HardwareInventoryService.Models.Models.Item[] GetItems() {
+            return base.Channel.GetItems();
+        }
+        
+        public System.Threading.Tasks.Task<HardwareInventoryService.Models.Models.Item[]> GetItemsAsync() {
+            return base.Channel.GetItemsAsync();
         }
     }
 }

@@ -3,10 +3,11 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models.Authorization" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models.Enums" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ICacheWCFContract_UpdateSession_InputMessage">
@@ -16,7 +17,7 @@
     <wsdl:part name="parameters" element="tns:UpdateSessionResponse" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_UpdateSession_ExceptionDetailFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q1:ExceptionDetail" />
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q1:ExceptionDetail" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_AddSession_InputMessage">
     <wsdl:part name="parameters" element="tns:AddSession" />
@@ -25,7 +26,7 @@
     <wsdl:part name="parameters" element="tns:AddSessionResponse" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_AddSession_ExceptionDetailFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q2:ExceptionDetail" />
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q2:ExceptionDetail" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetSessionByUsername_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSessionByUsername" />
@@ -34,7 +35,7 @@
     <wsdl:part name="parameters" element="tns:GetSessionByUsernameResponse" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetSessionByUsername_ExceptionDetailFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q3:ExceptionDetail" />
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q3:ExceptionDetail" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetSessionsByUsernamesArray_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSessionsByUsernamesArray" />
@@ -43,7 +44,7 @@
     <wsdl:part name="parameters" element="tns:GetSessionsByUsernamesArrayResponse" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetSessionsByUsernamesArray_ExceptionDetailFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q4:ExceptionDetail" />
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q4:ExceptionDetail" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetSessions_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSessions" />
@@ -52,7 +53,7 @@
     <wsdl:part name="parameters" element="tns:GetSessionsResponse" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetSessions_ExceptionDetailFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q5:ExceptionDetail" />
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q5:ExceptionDetail" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_RemoveSessionByUsername_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveSessionByUsername" />
@@ -61,7 +62,7 @@
     <wsdl:part name="parameters" element="tns:RemoveSessionByUsernameResponse" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_RemoveSessionByUsername_ExceptionDetailFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q6:ExceptionDetail" />
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q6:ExceptionDetail" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetLoggedSessions_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLoggedSessions" />
@@ -70,7 +71,7 @@
     <wsdl:part name="parameters" element="tns:GetLoggedSessionsResponse" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetLoggedSessions_ExceptionDetailFault_FaultMessage">
-    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q7:ExceptionDetail" />
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q7:ExceptionDetail" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_AddUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUser" />
@@ -79,7 +80,7 @@
     <wsdl:part name="parameters" element="tns:AddUserResponse" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_AddUser_ExceptionDetailFault_FaultMessage">
-    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q8:ExceptionDetail" />
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q8:ExceptionDetail" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetUserByUsername_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserByUsername" />
@@ -88,7 +89,25 @@
     <wsdl:part name="parameters" element="tns:GetUserByUsernameResponse" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetUserByUsername_ExceptionDetailFault_FaultMessage">
-    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q9:ExceptionDetail" />
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q9:ExceptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_AddItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddItem" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_AddItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_AddItem_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q10:ExceptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItems" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_GetItems_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q11:ExceptionDetail" />
   </wsdl:message>
   <wsdl:portType name="ICacheWCFContract">
     <wsdl:operation name="UpdateSession">
@@ -135,6 +154,16 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/GetUserByUsername" message="tns:ICacheWCFContract_GetUserByUsername_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/GetUserByUsernameResponse" message="tns:ICacheWCFContract_GetUserByUsername_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/GetUserByUsernameExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_GetUserByUsername_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/AddItem" message="tns:ICacheWCFContract_AddItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/AddItemResponse" message="tns:ICacheWCFContract_AddItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/AddItemExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_AddItem_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItems">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/GetItems" message="tns:ICacheWCFContract_GetItems_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/GetItemsResponse" message="tns:ICacheWCFContract_GetItems_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/GetItemsExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_GetItems_ExceptionDetailFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICacheWCFContract" type="tns:ICacheWCFContract">
@@ -237,6 +266,30 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserByUsername">
       <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/GetUserByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddItem">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/AddItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetItems">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/GetItems" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
