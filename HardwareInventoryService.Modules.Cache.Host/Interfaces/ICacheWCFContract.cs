@@ -1,10 +1,12 @@
-﻿using HardwareInventoryService.Models.Models.Authorization;
+﻿using HardwareInventoryService.Models.Models;
+using HardwareInventoryService.Models.Models.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using ExceptionDetail = HardwareInventoryService.Models.Models.ExceptionDetail;
 
 namespace HardwareInventoryService.Modules.Cache.Host.Interfaces
 {
@@ -52,6 +54,18 @@ namespace HardwareInventoryService.Modules.Cache.Host.Interfaces
         [OperationContract]
         [FaultContract(typeof(ExceptionDetail))]
         User GetUserByUsername(string username);
+
+        #endregion
+
+        #region Item
+
+        [OperationContract]
+        [FaultContract(typeof(ExceptionDetail))]
+        void AddItem(Item item);
+
+        [OperationContract]
+        [FaultContract(typeof(ExceptionDetail))]
+        List<Item> GetItems();
 
         #endregion
     }

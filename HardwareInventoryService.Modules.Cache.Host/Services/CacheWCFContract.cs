@@ -1,4 +1,5 @@
-﻿using HardwareInventoryService.Models.Models.Authorization;
+﻿using HardwareInventoryService.Models.Models;
+using HardwareInventoryService.Models.Models.Authorization;
 using HardwareInventoryService.Modules.Cache.Host.Interfaces;
 using HardwareInventoryService.Modules.Cache.Logic.Interfaces;
 using System;
@@ -23,6 +24,16 @@ namespace HardwareInventoryService.Modules.Cache.Host.Services
         public CacheWCFContract(ICacheLogicService cacheLogicService)
         {
             this._cacheLogicService = cacheLogicService;
+        }
+
+        public void AddItem(Item item)
+        {
+            this._cacheLogicService.AddItem(item);
+        }
+
+        public List<Item> GetItems()
+        {
+            return this._cacheLogicService.GetItems();
         }
 
         public virtual void AddUser(User user)
