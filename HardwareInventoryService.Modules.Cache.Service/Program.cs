@@ -142,7 +142,7 @@ namespace HardwareInventoryService.Modules.Cache.Service
                     .InterceptedBy(typeof(ExceptionLoggingInterceptor))
                     .InterceptedBy(typeof(TimeMeasuringInterceptor));
 
-            builder.RegisterType<CacheLogicService>().As<IItemLogic>()
+            builder.RegisterType<CacheLogicService>().As<ICacheLogicService>()
                 .SingleInstance()
                 .EnableInterfaceInterceptors()
                 .InterceptedBy(typeof(MethodLoggingInterceptor));

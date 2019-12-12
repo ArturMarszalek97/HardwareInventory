@@ -11,10 +11,11 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Logic
 {
     public partial class CacheLogicService : ICacheLogicService
     {
-        public CacheLogicService(ISessionRepository sessionRepository, IUserRepository userRepository)
+        public CacheLogicService(ISessionRepository sessionRepository, IUserRepository userRepository, IItemRepository itemRepository)
         {
             this._sessionRepo = sessionRepository;
             this._userRepository = userRepository;
+            this._itemRepository = itemRepository;
         }
     }
 }
