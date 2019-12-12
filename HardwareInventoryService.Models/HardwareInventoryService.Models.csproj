@@ -51,8 +51,11 @@
     <Compile Include="Models\Authorization\Session.cs" />
     <Compile Include="Models\Authorization\User.cs" />
     <Compile Include="Models\Enums\ErrorCode.cs" />
+    <Compile Include="Models\Enums\ItemCategory.cs" />
     <Compile Include="Models\ExceptionDetail.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\LogMessage.cs" />
+    <Compile Include="Models\Note.cs" />
     <Compile Include="NotFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
