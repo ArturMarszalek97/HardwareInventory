@@ -25,5 +25,26 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Helpers
 
             return mapper.Map<List<User>>(list);
         }
+
+        public static List<HardwareInventoryService.Models.Models.Item> TransformItemsFromDataBase(List<Item> list)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Item, HardwareInventoryService.Models.Models.Item>()
+                    .ForMember(dest => dest.ItemID, opt => opt.MapFrom(src => src.ItemID))
+                    .ForMember(dest => dest.UserID, opt => opt.MapFrom(src => src.UserID))
+                    .ForMember(dest => dest.ItemName, opt => opt.MapFrom(src => src.ItemName))
+                    .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
+                    .ForMember(dest => dest.DateOfPurchase, opt => opt.MapFrom(src => src.DateOfPurchase))
+                    .ForMember(dest => dest.Shop, opt => opt.MapFrom(src => src.Shop))
+                    .ForMember(dest => dest.Warranty, opt => opt.MapFrom(src => src.Warranty))
+                    .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.ItemCategory.CategoryName))
+                    .ForMember(dest => dest.Note, opt => opt.MapFrom(src => src.Note));
+            });
+
+            var mapper = config.CreateMapper();
+
+            return mapper.Map<List<HardwareInventoryService.Models.Models.Item>>(list);
+        }
     }
 }

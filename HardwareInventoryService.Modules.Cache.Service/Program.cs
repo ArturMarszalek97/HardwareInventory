@@ -86,6 +86,7 @@ namespace HardwareInventoryService.Modules.Cache.Service
 
                     _cacheService.Start();
                     _dataProviderService.GetUsers();
+                    _dataProviderService.GetItems();
 
                     //var file = File.ReadAllBytes("C:/Users/Artur/Desktop/pexels-photo-247885.jpeg");
                     //Users users = new Users();
@@ -128,6 +129,7 @@ namespace HardwareInventoryService.Modules.Cache.Service
 
             builder.RegisterType<SessionRepository>().As<ISessionRepository>().SingleInstance();
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
+            builder.RegisterType<ItemRepository>().As<IItemRepository>().SingleInstance();
 
             builder.RegisterType<DataProviderService>().As<IDataProviderService>().SingleInstance().EnableInterfaceInterceptors()
                     .InterceptedBy(typeof(MethodLoggingInterceptor))

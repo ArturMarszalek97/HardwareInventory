@@ -16,16 +16,38 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
 
         IUserRepository _userRepository;
 
-        public DataProviderService(ISessionRepository sessionRepository, IUserRepository userRepository)
+        IItemRepository _itemRepository;
+
+        public DataProviderService(ISessionRepository sessionRepository, IUserRepository userRepository, IItemRepository itemRepository)
         {
             this._sessionRepository = sessionRepository;
             this._userRepository = userRepository;
+            this._itemRepository = itemRepository;
+        }
+
+        public void AddItem(Item item)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddUser(Users user)
         {
             this.context.Users.Add(user);
             this.context.SaveChanges();
+        }
+
+        public async Task GetItems()
+        {
+            List<Item> items = new List<Item>();
+
+            await Task.Run(() =>
+            {
+                items = this.context.Item.ToList();
+            });
+
+            var mappedItems = Helpers.Automapper.TransformItemsFromDataBase(items);
+
+            mappedItems.ForEach(x => this._itemRepository.AddItem(x));
         }
 
         public async Task GetUsers()
@@ -48,5 +70,9 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
         Task GetUsers();
 
         void AddUser(Users user);
+
+        void AddItem(Item item);
+
+        Task GetItems();
     }
 }
