@@ -30,5 +30,7 @@ namespace HardwareInventoryService.Models.Models
         public int Warranty { get; set; }
 
         public int Return { get; set; }
+
+        public string ImageSource { get; set; }
     }
 }
