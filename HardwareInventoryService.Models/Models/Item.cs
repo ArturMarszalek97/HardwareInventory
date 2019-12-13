@@ -28,5 +28,7 @@ namespace HardwareInventoryService.Models.Models
         public string Note { get; set; }
 
         public int Warranty { get; set; }
+
+        public int Return { get; set; }
     }
 }
