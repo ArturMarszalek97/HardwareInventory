@@ -19,6 +19,8 @@ namespace HardwareInventoryService.Models.Models
 
         public DateTime DateOfPurchase { get; set; }
 
+        public string DateOfPurchaseToDisplay { get; set; }
+
         public string Shop { get; set; }
 
         public string Category { get; set; }
