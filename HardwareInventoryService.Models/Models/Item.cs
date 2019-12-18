@@ -29,8 +29,16 @@ namespace HardwareInventoryService.Models.Models
 
         public int Warranty { get; set; }
 
+        public string WarrantyToDisplay { get; set; }
+
         public int Return { get; set; }
 
+        public string ReturnToDisplay { get; set; }
+
         public string ImageSource { get; set; }
+
+        public byte[] Picture { get; set; }
+
+        public byte[] PDFDocument { get; set; }
     }
 }

@@ -67,6 +67,7 @@ namespace HardwareInventoryService.Modules.Authorization.Logic.Logic
             }
 
             authData.AccountPhoto = user.AccountPhoto;
+            authData.UserId = user.UserID;
 
             // generate json web tokens
             this._jwtService.SecretKey = configuration.JWTSecretKey;

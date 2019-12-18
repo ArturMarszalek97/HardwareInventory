@@ -50,6 +50,7 @@
     <Compile Include="Models\Authorization\IUserCacheModel.cs" />
     <Compile Include="Models\Authorization\Session.cs" />
     <Compile Include="Models\Authorization\User.cs" />
+    <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Enums\ErrorCode.cs" />
     <Compile Include="Models\Enums\ItemCategory.cs" />
     <Compile Include="Models\ExceptionDetail.cs" />

@@ -9,17 +9,11 @@ namespace HardwareInventoryService.Models.Models.Enums
     public enum ItemCategory
     {
         Elektronika,
-        Odzież,
-        Obuwie,
-        Jedzenie,
         Zdrowie,
         Kosmetyki,
         Dom,
-        Akcesoria,
-        Sporte,
         Biuro,
         Motoryzacja,
-        Zabawki,
         Inne
     }
 }
