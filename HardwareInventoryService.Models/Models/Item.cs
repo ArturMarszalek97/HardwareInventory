@@ -37,7 +37,11 @@ namespace HardwareInventoryService.Models.Models
 
         public string ImageSource { get; set; }
 
+        public string PictureName { get; set; }
+
         public byte[] Picture { get; set; }
+
+        public string PDFDocumentName { get; set; }
 
         public byte[] PDFDocument { get; set; }
     }
