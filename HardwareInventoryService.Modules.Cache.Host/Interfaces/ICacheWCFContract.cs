@@ -65,6 +65,14 @@ namespace HardwareInventoryService.Modules.Cache.Host.Interfaces
 
         [OperationContract]
         [FaultContract(typeof(ExceptionDetail))]
+        void RemoveItem(Item item);
+
+        [OperationContract]
+        [FaultContract(typeof(ExceptionDetail))]
+        void UpdateItem(Item item);
+
+        [OperationContract]
+        [FaultContract(typeof(ExceptionDetail))]
         List<Item> GetItems();
 
         #endregion

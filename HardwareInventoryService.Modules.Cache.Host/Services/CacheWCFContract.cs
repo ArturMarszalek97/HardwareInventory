@@ -80,5 +80,15 @@ namespace HardwareInventoryService.Modules.Cache.Host.Services
         {
             this._cacheLogicService.UpdateSession(session);
         }
+
+        public void RemoveItem(Item item)
+        {
+            this._cacheLogicService.RemoveItem(item);
+        }
+
+        public void UpdateItem(Item item)
+        {
+            this._cacheLogicService.UpdateItem(item);
+        }
     }
 }

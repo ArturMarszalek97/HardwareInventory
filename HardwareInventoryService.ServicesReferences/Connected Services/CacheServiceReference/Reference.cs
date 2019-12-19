@@ -86,6 +86,20 @@ namespace HardwareInventoryService.ServicesReferences.CacheServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/AddItem", ReplyAction="http://tempuri.org/ICacheWCFContract/AddItemResponse")]
         System.Threading.Tasks.Task AddItemAsync(HardwareInventoryService.Models.Models.Item item);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/RemoveItem", ReplyAction="http://tempuri.org/ICacheWCFContract/RemoveItemResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/RemoveItemExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
+        void RemoveItem(HardwareInventoryService.Models.Models.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/RemoveItem", ReplyAction="http://tempuri.org/ICacheWCFContract/RemoveItemResponse")]
+        System.Threading.Tasks.Task RemoveItemAsync(HardwareInventoryService.Models.Models.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/UpdateItem", ReplyAction="http://tempuri.org/ICacheWCFContract/UpdateItemResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/UpdateItemExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
+        void UpdateItem(HardwareInventoryService.Models.Models.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/UpdateItem", ReplyAction="http://tempuri.org/ICacheWCFContract/UpdateItemResponse")]
+        System.Threading.Tasks.Task UpdateItemAsync(HardwareInventoryService.Models.Models.Item item);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICacheWCFContract/GetItems", ReplyAction="http://tempuri.org/ICacheWCFContract/GetItemsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(HardwareInventoryService.Models.Models.ExceptionDetail), Action="http://tempuri.org/ICacheWCFContract/GetItemsExceptionDetailFault", Name="ExceptionDetail", Namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models")]
         HardwareInventoryService.Models.Models.Item[] GetItems();
@@ -199,6 +213,22 @@ namespace HardwareInventoryService.ServicesReferences.CacheServiceReference {
         
         public System.Threading.Tasks.Task AddItemAsync(HardwareInventoryService.Models.Models.Item item) {
             return base.Channel.AddItemAsync(item);
+        }
+        
+        public void RemoveItem(HardwareInventoryService.Models.Models.Item item) {
+            base.Channel.RemoveItem(item);
+        }
+        
+        public System.Threading.Tasks.Task RemoveItemAsync(HardwareInventoryService.Models.Models.Item item) {
+            return base.Channel.RemoveItemAsync(item);
+        }
+        
+        public void UpdateItem(HardwareInventoryService.Models.Models.Item item) {
+            base.Channel.UpdateItem(item);
+        }
+        
+        public System.Threading.Tasks.Task UpdateItemAsync(HardwareInventoryService.Models.Models.Item item) {
+            return base.Channel.UpdateItemAsync(item);
         }
         
         public HardwareInventoryService.Models.Models.Item[] GetItems() {

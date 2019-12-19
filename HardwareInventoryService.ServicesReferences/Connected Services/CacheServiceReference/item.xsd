@@ -129,6 +129,30 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="RemoveItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" minOccurs="0" name="item" nillable="true" type="q11:Item" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveItemResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" minOccurs="0" name="item" nillable="true" type="q12:Item" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateItemResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetItems">
     <xs:complexType>
       <xs:sequence />
@@ -137,7 +161,7 @@
   <xs:element name="GetItemsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" minOccurs="0" name="GetItemsResult" nillable="true" type="q11:ArrayOfItem" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" minOccurs="0" name="GetItemsResult" nillable="true" type="q13:ArrayOfItem" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

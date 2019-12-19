@@ -1,4 +1,5 @@
-﻿using HardwareInventoryService.Models.Models;
+﻿using HardwareInventoryService.Models;
+using HardwareInventoryService.Models.Models;
 using HardwareInventoryService.Modules.Cache.Logic.IRepositories;
 using HardwareInventoryService.Modules.Cache.Logic.Logic;
 using System;
@@ -53,6 +54,27 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Repositories
             }
 
             return list;
+        }
+
+        public void RemoveItem(Item item)
+        {
+            lock (this._itemsSetLock)
+            {
+                var result = this._itemsSet.RemoveWhere(x => x.Object.ItemID == item.ItemID);
+                if (result == 0)
+                {
+                    throw new NotFoundException();
+                }
+            }
+        }
+
+        public void UpdateItem(Item item)
+        {
+            lock (this._itemsSetLock)
+            {
+                var editedItem = this._itemsSet.FirstOrDefault(x => x.Object.ItemID == item.ItemID) ?? throw new NotFoundException();
+                editedItem.Object = item;
+            }
         }
     }
 }

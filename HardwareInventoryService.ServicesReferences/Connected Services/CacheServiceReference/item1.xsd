@@ -17,13 +17,22 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="DateOfPurchase" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateOfPurchaseToDisplay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageSource" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ItemID" type="xs:int" />
       <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PDFDocument" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PDFDocumentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Picture" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PictureName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Price" type="xs:float" />
+      <xs:element minOccurs="0" name="Return" type="xs:int" />
+      <xs:element minOccurs="0" name="ReturnToDisplay" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Shop" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserID" type="xs:int" />
       <xs:element minOccurs="0" name="Warranty" type="xs:int" />
+      <xs:element minOccurs="0" name="WarrantyToDisplay" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Item" nillable="true" type="tns:Item" />

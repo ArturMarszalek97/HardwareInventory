@@ -14,6 +14,10 @@ namespace HardwareInventoryService.Modules.Cache.Logic.IRepositories
 
         void AddItem(Item item);
 
+        void RemoveItem(Item item);
+
+        void UpdateItem(Item item);
+
         List<Item> GetItems();
     }
 }

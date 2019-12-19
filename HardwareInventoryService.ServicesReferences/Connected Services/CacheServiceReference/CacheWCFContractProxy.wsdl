@@ -100,6 +100,24 @@
   <wsdl:message name="ICacheWCFContract_AddItem_ExceptionDetailFault_FaultMessage">
     <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q10:ExceptionDetail" />
   </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_RemoveItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveItem" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_RemoveItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_RemoveItem_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q11:ExceptionDetail" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_UpdateItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateItem" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_UpdateItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICacheWCFContract_UpdateItem_ExceptionDetailFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q12:ExceptionDetail" />
+  </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetItems_InputMessage">
     <wsdl:part name="parameters" element="tns:GetItems" />
   </wsdl:message>
@@ -107,7 +125,7 @@
     <wsdl:part name="parameters" element="tns:GetItemsResponse" />
   </wsdl:message>
   <wsdl:message name="ICacheWCFContract_GetItems_ExceptionDetailFault_FaultMessage">
-    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q11:ExceptionDetail" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" name="detail" element="q13:ExceptionDetail" />
   </wsdl:message>
   <wsdl:portType name="ICacheWCFContract">
     <wsdl:operation name="UpdateSession">
@@ -159,6 +177,16 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/AddItem" message="tns:ICacheWCFContract_AddItem_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/AddItemResponse" message="tns:ICacheWCFContract_AddItem_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/AddItemExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_AddItem_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/RemoveItem" message="tns:ICacheWCFContract_RemoveItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/RemoveItemResponse" message="tns:ICacheWCFContract_RemoveItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/RemoveItemExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_RemoveItem_ExceptionDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/UpdateItem" message="tns:ICacheWCFContract_UpdateItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICacheWCFContract/UpdateItemResponse" message="tns:ICacheWCFContract_UpdateItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICacheWCFContract/UpdateItemExceptionDetailFault" name="ExceptionDetailFault" message="tns:ICacheWCFContract_UpdateItem_ExceptionDetailFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetItems">
       <wsdl:input wsaw:Action="http://tempuri.org/ICacheWCFContract/GetItems" message="tns:ICacheWCFContract_GetItems_InputMessage" />
@@ -278,6 +306,30 @@
     </wsdl:operation>
     <wsdl:operation name="AddItem">
       <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/AddItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveItem">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/RemoveItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ExceptionDetailFault">
+        <soap:fault use="literal" name="ExceptionDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <soap:operation soapAction="http://tempuri.org/ICacheWCFContract/UpdateItem" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
