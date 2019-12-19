@@ -12,6 +12,10 @@
         <EntityTypeShape EntityType="HardwareInventoryModel.ItemCategory" Width="1.5" PointX="2" PointY="3.625" />
         <AssociationConnector Association="HardwareInventoryModel.FK_Item_ItemCategory" />
         <AssociationConnector Association="HardwareInventoryModel.FK_Item_Users" />
+        <EntityTypeShape EntityType="HardwareInventoryModel.PDFDocument" Width="1.5" PointX="2" PointY="6" />
+        <EntityTypeShape EntityType="HardwareInventoryModel.Picture" Width="1.5" PointX="6.375" PointY="0.875" />
+        <AssociationConnector Association="HardwareInventoryModel.FK_Item_PDFDocument" />
+        <AssociationConnector Association="HardwareInventoryModel.FK_Item_Picture" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

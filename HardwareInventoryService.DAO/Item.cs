@@ -23,8 +23,13 @@ namespace HardwareInventoryService.DAO
         public Nullable<int> Warranty { get; set; }
         public int CategoryID { get; set; }
         public string Note { get; set; }
+        public Nullable<int> DaysToReturn { get; set; }
+        public Nullable<int> DocumentID { get; set; }
+        public Nullable<int> PictureID { get; set; }
     
         public virtual ItemCategory ItemCategory { get; set; }
         public virtual Users Users { get; set; }
+        public virtual PDFDocument PDFDocument { get; set; }
+        public virtual Picture Picture { get; set; }
     }
 }

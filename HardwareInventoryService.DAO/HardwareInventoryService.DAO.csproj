@@ -71,6 +71,12 @@
     <Compile Include="ItemCategory.cs">
       <DependentUpon>HardwareInventoryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PDFDocument.cs">
+      <DependentUpon>HardwareInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Picture.cs">
+      <DependentUpon>HardwareInventoryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessions.cs">
       <DependentUpon>HardwareInventoryModel.tt</DependentUpon>

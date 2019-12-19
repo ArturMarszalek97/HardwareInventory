@@ -18,6 +18,9 @@
           <Property Name="Warranty" Type="int" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="Note" Type="varchar" MaxLength="150" />
+          <Property Name="DaysToReturn" Type="int" />
+          <Property Name="DocumentID" Type="int" />
+          <Property Name="PictureID" Type="int" />
         </EntityType>
         <EntityType Name="ItemCategory">
           <Key>
@@ -25,6 +28,22 @@
           </Key>
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PDFDocument">
+          <Key>
+            <PropertyRef Name="DocumentID" />
+          </Key>
+          <Property Name="DocumentID" Type="int" Nullable="false" />
+          <Property Name="PDFDocumentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PDFDocumentArray" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="PictureID" />
+          </Key>
+          <Property Name="PictureID" Type="int" Nullable="false" />
+          <Property Name="PictureName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PictureArray" Type="image" Nullable="false" />
         </EntityType>
         <EntityType Name="Sessions">
           <Key>
@@ -51,6 +70,30 @@
             </Principal>
             <Dependent Role="Item">
               <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_PDFDocument">
+          <End Role="PDFDocument" Type="Self.PDFDocument" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PDFDocument">
+              <PropertyRef Name="DocumentID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Picture">
+          <End Role="Picture" Type="Self.Picture" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Picture">
+              <PropertyRef Name="PictureID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="PictureID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -81,10 +124,20 @@
         <EntityContainer Name="HardwareInventoryModelStoreContainer">
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemCategory" EntityType="Self.ItemCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PDFDocument" EntityType="Self.PDFDocument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Item_ItemCategory" Association="Self.FK_Item_ItemCategory">
             <End Role="ItemCategory" EntitySet="ItemCategory" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_PDFDocument" Association="Self.FK_Item_PDFDocument">
+            <End Role="PDFDocument" EntitySet="PDFDocument" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Picture" Association="Self.FK_Item_Picture">
+            <End Role="Picture" EntitySet="Picture" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
           <AssociationSet Name="FK_Item_Users" Association="Self.FK_Item_Users">
@@ -128,6 +181,16 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
+          <EntitySet Name="PDFDocument" EntityType="HardwareInventoryModel.PDFDocument" />
+          <EntitySet Name="Picture" EntityType="HardwareInventoryModel.Picture" />
+          <AssociationSet Name="FK_Item_PDFDocument" Association="HardwareInventoryModel.FK_Item_PDFDocument">
+            <End Role="PDFDocument" EntitySet="PDFDocument" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Picture" Association="HardwareInventoryModel.FK_Item_Picture">
+            <End Role="Picture" EntitySet="Picture" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Sessions">
           <Key>
@@ -164,6 +227,11 @@
           <Property Name="Note" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ItemCategory" Relationship="HardwareInventoryModel.FK_Item_ItemCategory" FromRole="Item" ToRole="ItemCategory" />
           <NavigationProperty Name="Users" Relationship="HardwareInventoryModel.FK_Item_Users" FromRole="Item" ToRole="Users" />
+          <Property Name="DaysToReturn" Type="Int32" />
+          <Property Name="DocumentID" Type="Int32" />
+          <Property Name="PictureID" Type="Int32" />
+          <NavigationProperty Name="PDFDocument" Relationship="HardwareInventoryModel.FK_Item_PDFDocument" FromRole="Item" ToRole="PDFDocument" />
+          <NavigationProperty Name="Picture" Relationship="HardwareInventoryModel.FK_Item_Picture" FromRole="Item" ToRole="Picture" />
         </EntityType>
         <EntityType Name="ItemCategory">
           <Key>
@@ -197,6 +265,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PDFDocument">
+          <Key>
+            <PropertyRef Name="DocumentID" />
+          </Key>
+          <Property Name="DocumentID" Type="Int32" Nullable="false" />
+          <Property Name="PDFDocumentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Item" Relationship="HardwareInventoryModel.FK_Item_PDFDocument" FromRole="PDFDocument" ToRole="Item" />
+          <Property Name="PDFDocumentArray" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="PictureID" />
+          </Key>
+          <Property Name="PictureID" Type="Int32" Nullable="false" />
+          <Property Name="PictureName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Item" Relationship="HardwareInventoryModel.FK_Item_Picture" FromRole="Picture" ToRole="Item" />
+          <Property Name="PictureArray" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Item_PDFDocument">
+          <End Type="HardwareInventoryModel.PDFDocument" Role="PDFDocument" Multiplicity="0..1" />
+          <End Type="HardwareInventoryModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PDFDocument">
+              <PropertyRef Name="DocumentID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Picture">
+          <End Type="HardwareInventoryModel.Picture" Role="Picture" Multiplicity="0..1" />
+          <End Type="HardwareInventoryModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Picture">
+              <PropertyRef Name="PictureID" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="PictureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -224,6 +334,9 @@
           <EntitySetMapping Name="Item">
             <EntityTypeMapping TypeName="HardwareInventoryModel.Item">
               <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="PictureID" ColumnName="PictureID" />
+                <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+                <ScalarProperty Name="DaysToReturn" ColumnName="DaysToReturn" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="Warranty" ColumnName="Warranty" />
@@ -241,6 +354,24 @@
               <MappingFragment StoreEntitySet="ItemCategory">
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PDFDocument">
+            <EntityTypeMapping TypeName="HardwareInventoryModel.PDFDocument">
+              <MappingFragment StoreEntitySet="PDFDocument">
+                <ScalarProperty Name="PDFDocumentArray" ColumnName="PDFDocumentArray" />
+                <ScalarProperty Name="PDFDocumentName" ColumnName="PDFDocumentName" />
+                <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Picture">
+            <EntityTypeMapping TypeName="HardwareInventoryModel.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="PictureArray" ColumnName="PictureArray" />
+                <ScalarProperty Name="PictureName" ColumnName="PictureName" />
+                <ScalarProperty Name="PictureID" ColumnName="PictureID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
