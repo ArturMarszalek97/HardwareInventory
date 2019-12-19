@@ -11,7 +11,7 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
 {
     public class DataProviderService : IDataProviderService
     {
-        HardwareInventoryEntities context = new HardwareInventoryEntities();
+        public HardwareInventoryEntities context; 
 
         ISessionRepository _sessionRepository;
 
@@ -21,6 +21,7 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
 
         public DataProviderService(ISessionRepository sessionRepository, IUserRepository userRepository, IItemRepository itemRepository)
         {
+            this.context = new HardwareInventoryEntities();
             this._sessionRepository = sessionRepository;
             this._userRepository = userRepository;
             this._itemRepository = itemRepository;
@@ -49,6 +50,11 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
         {
             this.context.Users.Add(user);
             this.context.SaveChanges();
+        }
+
+        public List<ItemCategory> GetItemCategories()
+        {
+            return this.context.ItemCategory.ToList();
         }
 
         public void GetItems()
@@ -86,5 +92,7 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
         void AddItem(Item item);
 
         void GetItems();
+
+        List<ItemCategory> GetItemCategories();
     }
 }

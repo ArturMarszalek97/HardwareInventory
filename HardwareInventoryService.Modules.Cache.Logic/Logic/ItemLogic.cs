@@ -2,6 +2,7 @@
 using HardwareInventoryService.Modules.Cache.Logic.Interfaces;
 using HardwareInventoryService.Modules.Cache.Logic.IRepositories;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace HardwareInventoryService.Modules.Cache.Logic.Logic
@@ -15,8 +16,9 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Logic
             this._itemRepository.AddItem(item);
 
             var transformedItem = Helpers.Automapper.TransformItemToDatabaseType(item);
-            //transformedItem.= 999999999;
-            //transformedItem.PictureID = 999999999;
+            var listOfItemCategories = this._dataProviderService.GetItemCategories();
+            transformedItem.ItemCategory = listOfItemCategories.Where(x => x.CategoryName == item.Category).Single();
+
             this._dataProviderService.AddItem(transformedItem);
         }
 

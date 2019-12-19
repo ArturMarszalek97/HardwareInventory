@@ -64,7 +64,6 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Helpers
                     .ForMember(dest => dest.DateOfPurchase, opt => opt.MapFrom(src => src.DateOfPurchase))
                     .ForMember(dest => dest.Shop, opt => opt.MapFrom(src => src.Shop))
                     .ForMember(dest => dest.Warranty, opt => opt.MapFrom(src => src.Warranty))
-                    .ForMember(dest => dest.ItemCategory, opt => opt.MapFrom(src => new ItemCategory { CategoryName = src.Category }))
                     .ForMember(dest => dest.Note, opt => opt.MapFrom(src => src.Note))
                     .ForMember(dest => dest.DaysToReturn, opt => opt.MapFrom(src => src.Return))
                     .ForMember(dest => dest.PDFDocument, opt => opt.MapFrom(src => new PDFDocument { PDFDocumentName = src.PDFDocumentName, PDFDocumentArray = src.PDFDocument }))
