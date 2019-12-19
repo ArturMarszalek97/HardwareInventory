@@ -2,6 +2,7 @@
 using HardwareInventoryService.Modules.Cache.Logic.Interfaces;
 using HardwareInventoryService.Modules.Cache.Logic.IRepositories;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HardwareInventoryService.Modules.Cache.Logic.Logic
 {
@@ -12,6 +13,11 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Logic
         public void AddItem(Item item)
         {
             this._itemRepository.AddItem(item);
+
+            var transformedItem = Helpers.Automapper.TransformItemToDatabaseType(item);
+            //transformedItem.= 999999999;
+            //transformedItem.PictureID = 999999999;
+            this._dataProviderService.AddItem(transformedItem);
         }
 
         public void UpdateItem(Item item)

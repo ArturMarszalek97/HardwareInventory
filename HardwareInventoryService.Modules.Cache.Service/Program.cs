@@ -119,7 +119,7 @@ namespace HardwareInventoryService.Modules.Cache.Service
         private static async Task GetData(IDataProviderService dataProviderService)
         {
             await _dataProviderService.GetUsers();
-            await _dataProviderService.GetItems();
+            _dataProviderService.GetItems();
         }
 
         private static IContainer BuildIOCContainer()

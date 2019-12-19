@@ -2,6 +2,7 @@
 using HardwareInventoryService.Modules.Cache.Logic.IRepositories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,21 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
 
         public void AddItem(Item item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                this.context.Item.Add(item);
+                this.context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                var x = 1;
+            }
+            catch (Exception e)
+            {
+                var x = 1;
+                throw;
+            }
+            
         }
 
         public void AddUser(Users user)
@@ -36,14 +51,11 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
             this.context.SaveChanges();
         }
 
-        public async Task GetItems()
+        public void GetItems()
         {
             List<Item> items = new List<Item>();
 
-            await Task.Run(() =>
-            {
-                items = this.context.Item.ToList();
-            });
+            items = this.context.Item.ToList();
 
             var mappedItems = Helpers.Automapper.TransformItemsFromDataBase(items);
 
@@ -73,6 +85,6 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
 
         void AddItem(Item item);
 
-        Task GetItems();
+        void GetItems();
     }
 }

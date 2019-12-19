@@ -2,6 +2,7 @@
 using HardwareInventoryService.Models.Models.Authorization;
 using HardwareInventoryService.Modules.Cache.Logic.Interfaces;
 using HardwareInventoryService.Modules.Cache.Logic.IRepositories;
+using HardwareInventoryService.Modules.Cache.Logic.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

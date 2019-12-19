@@ -41,7 +41,10 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Repositories
 
         public void AddItem(Item item)
         {
-            this._itemsSet.AddExtension(item);
+            lock (this._itemsSetLock)
+            {
+                this._itemsSet.AddExtension(item);
+            }
         }
 
         public List<Item> GetItems()
