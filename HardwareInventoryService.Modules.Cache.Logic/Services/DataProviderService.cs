@@ -87,9 +87,10 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
             mappedUsers.ForEach(x => this._userRepository.AddUser(x));
         }
 
-        public void RemoveItem(Item item)
+        public void RemoveItem(Guid key)
         {
-            this.context.Item.Remove(item);
+            var itemToRemove = this.context.Item.ToList().Where(x => x.KeyForCache == key).Single();
+            this.context.Item.Remove(itemToRemove);
             this.context.SaveChanges();
         }
     }
@@ -102,7 +103,7 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
 
         void AddItem(Item item);
 
-        void RemoveItem(Item item);
+        void RemoveItem(Guid key);
 
         void GetItems();
 

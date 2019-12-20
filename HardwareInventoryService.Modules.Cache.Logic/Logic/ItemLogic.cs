@@ -35,12 +35,7 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Logic
         public void RemoveItem(Item item)
         {
             this._itemRepository.RemoveItem(item);
-
-            var transformedItem = Helpers.Automapper.TransformItemToDatabaseType(item);
-            var listOfItemCategories = this._dataProviderService.GetItemCategories();
-            transformedItem.ItemCategory = listOfItemCategories.Where(x => x.CategoryName == item.Category).Single();
-
-            this._dataProviderService.RemoveItem(transformedItem);
+            this._dataProviderService.RemoveItem(item.KeyForCache);
         }
     }
 }
