@@ -25,6 +25,7 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Logic
         public void UpdateItem(Item item)
         {
             this._itemRepository.UpdateItem(item);
+            this._dataProviderService.UpdateItem(item);
         }
 
         public List<Item> GetItems()

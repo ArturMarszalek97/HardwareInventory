@@ -89,9 +89,38 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
 
         public void RemoveItem(Guid key)
         {
-            var itemToRemove = this.context.Item.ToList().Where(x => x.KeyForCache == key).Single();
-            this.context.Item.Remove(itemToRemove);
-            this.context.SaveChanges();
+            var itemToRemove = this.context.Item.SingleOrDefault(x => x.KeyForCache == key);
+
+            if (itemToRemove != null)
+            {
+                this.context.Item.Remove(itemToRemove);
+                this.context.SaveChanges();
+            }
+        }
+
+        public void UpdateItem(Models.Models.Item item)
+        {
+            var itemToUpdate = this.context.Item.SingleOrDefault(x => x.KeyForCache == item.KeyForCache);
+
+            var updatedItem = new Item();
+
+            if (itemToUpdate != null)
+            {
+                updatedItem.ItemName = item.ItemName;
+                updatedItem.Price = item.Price;
+                updatedItem.DateOfPurchase = item.DateOfPurchase;
+                updatedItem.Shop = item.Shop;
+                updatedItem.Warranty = item.Warranty;
+                updatedItem.Note = item.Note;
+                updatedItem.DaysToReturn = item.Return;
+                updatedItem.ItemCategory = this.context.ItemCategory.Single(x => x.CategoryName == item.Category);
+                updatedItem.PDFDocument = new PDFDocument() { PDFDocumentName = item.PDFDocumentName, PDFDocumentArray = item.PDFDocument };
+                updatedItem.Picture = new Picture() { PictureName = item.PictureName, PictureArray = item.Picture };
+
+                this.context.Entry(itemToUpdate).CurrentValues.SetValues(updatedItem);
+                this.context.SaveChanges();
+            }
+
         }
     }
 
@@ -104,6 +133,8 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
         void AddItem(Item item);
 
         void RemoveItem(Guid key);
+
+        void UpdateItem(Models.Models.Item item);
 
         void GetItems();
 
