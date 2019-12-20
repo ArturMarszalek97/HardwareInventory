@@ -26,6 +26,7 @@ namespace HardwareInventoryService.DAO
         public Nullable<int> DaysToReturn { get; set; }
         public Nullable<int> DocumentID { get; set; }
         public Nullable<int> PictureID { get; set; }
+        public Nullable<System.Guid> KeyForCache { get; set; }
     
         public virtual ItemCategory ItemCategory { get; set; }
         public virtual Users Users { get; set; }

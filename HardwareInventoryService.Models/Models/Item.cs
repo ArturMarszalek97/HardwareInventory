@@ -44,5 +44,7 @@ namespace HardwareInventoryService.Models.Models
         public string PDFDocumentName { get; set; }
 
         public byte[] PDFDocument { get; set; }
+
+        public Guid KeyForCache { get; set; }
     }
 }

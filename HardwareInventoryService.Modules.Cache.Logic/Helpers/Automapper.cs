@@ -44,7 +44,8 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Helpers
                     .ForMember(dest => dest.PDFDocumentName, opt => opt.MapFrom(src => src.PDFDocument.PDFDocumentName))
                     .ForMember(dest => dest.PDFDocument, opt => opt.MapFrom(src => src.PDFDocument.PDFDocumentArray))
                     .ForMember(dest => dest.PictureName, opt => opt.MapFrom(src => src.Picture.PictureName))
-                    .ForMember(dest => dest.Picture, opt => opt.MapFrom(src => src.Picture.PictureArray));
+                    .ForMember(dest => dest.Picture, opt => opt.MapFrom(src => src.Picture.PictureArray))
+                    .ForMember(dest => dest.KeyForCache, opt => opt.MapFrom(src => src.KeyForCache)); 
             });
 
             var mapper = config.CreateMapper();
@@ -67,7 +68,8 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Helpers
                     .ForMember(dest => dest.Note, opt => opt.MapFrom(src => src.Note))
                     .ForMember(dest => dest.DaysToReturn, opt => opt.MapFrom(src => src.Return))
                     .ForMember(dest => dest.PDFDocument, opt => opt.MapFrom(src => new PDFDocument { PDFDocumentName = src.PDFDocumentName, PDFDocumentArray = src.PDFDocument }))
-                    .ForMember(dest => dest.Picture, opt => opt.MapFrom(src => new Picture { PictureName = src.PictureName, PictureArray = src.Picture }));
+                    .ForMember(dest => dest.Picture, opt => opt.MapFrom(src => new Picture { PictureName = src.PictureName, PictureArray = src.Picture }))
+                    .ForMember(dest => dest.KeyForCache, opt => opt.MapFrom(src => src.KeyForCache));
             });
 
             var mapper = config.CreateMapper();
