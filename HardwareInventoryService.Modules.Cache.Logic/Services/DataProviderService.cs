@@ -68,6 +68,11 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
             mappedItems.ForEach(x => this._itemRepository.AddItem(x));
         }
 
+        public List<Item> GetItemsList()
+        {
+            return this.context.Item.ToList();
+        }
+
         public async Task GetUsers()
         {
             List<Users> users = new List<Users>();
@@ -81,6 +86,12 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
 
             mappedUsers.ForEach(x => this._userRepository.AddUser(x));
         }
+
+        public void RemoveItem(Item item)
+        {
+            this.context.Item.Remove(item);
+            this.context.SaveChanges();
+        }
     }
 
     public interface IDataProviderService
@@ -91,7 +102,11 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
 
         void AddItem(Item item);
 
+        void RemoveItem(Item item);
+
         void GetItems();
+
+        List<Item> GetItemsList();
 
         List<ItemCategory> GetItemCategories();
     }

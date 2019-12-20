@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="ItemID" />
           </Key>
-          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="ItemName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="float" Nullable="false" />
@@ -33,7 +33,7 @@
           <Key>
             <PropertyRef Name="DocumentID" />
           </Key>
-          <Property Name="DocumentID" Type="int" Nullable="false" />
+          <Property Name="DocumentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PDFDocumentName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PDFDocumentArray" Type="varbinary(max)" Nullable="false" />
         </EntityType>
@@ -41,7 +41,7 @@
           <Key>
             <PropertyRef Name="PictureID" />
           </Key>
-          <Property Name="PictureID" Type="int" Nullable="false" />
+          <Property Name="PictureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PictureName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PictureArray" Type="image" Nullable="false" />
         </EntityType>
