@@ -76,5 +76,29 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Helpers
 
             return mapper.Map<Item>(item);
         }
+
+        public static Item TransformItemForUpdateToDatabaseType(Models.Models.Item item)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<Models.Models.Item, Item>()
+                    .ForMember(dest => dest.ItemID, opt => opt.MapFrom(src => src.ItemID))
+                    .ForMember(dest => dest.UserID, opt => opt.MapFrom(src => src.UserID))
+                    .ForMember(dest => dest.ItemName, opt => opt.MapFrom(src => src.ItemName))
+                    .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
+                    .ForMember(dest => dest.DateOfPurchase, opt => opt.MapFrom(src => src.DateOfPurchase))
+                    .ForMember(dest => dest.Shop, opt => opt.MapFrom(src => src.Shop))
+                    .ForMember(dest => dest.Warranty, opt => opt.MapFrom(src => src.Warranty))
+                    .ForMember(dest => dest.Note, opt => opt.MapFrom(src => src.Note))
+                    .ForMember(dest => dest.DaysToReturn, opt => opt.MapFrom(src => src.Return))
+                    .ForMember(dest => dest.PDFDocument, opt => opt.Ignore())
+                    .ForMember(dest => dest.Picture, opt => opt.Ignore())
+                    .ForMember(dest => dest.KeyForCache, opt => opt.MapFrom(src => src.KeyForCache));
+            });
+
+            var mapper = config.CreateMapper();
+
+            return mapper.Map<Item>(item);
+        }
     }
 }

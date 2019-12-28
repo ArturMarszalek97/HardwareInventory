@@ -102,25 +102,75 @@ namespace HardwareInventoryService.Modules.Cache.Logic.Services
         {
             var itemToUpdate = this.context.Item.SingleOrDefault(x => x.KeyForCache == item.KeyForCache);
 
-            var updatedItem = new Item();
+            var updatedItem = Helpers.Automapper.TransformItemForUpdateToDatabaseType(item);
+            updatedItem.ItemID = itemToUpdate.ItemID;
+
+            var listOfItemCategories = this.GetItemCategories();
+            updatedItem.ItemCategory = listOfItemCategories.Where(x => x.CategoryName == item.Category).Single();
+            updatedItem.CategoryID = listOfItemCategories.Where(x => x.CategoryName == item.Category).Single().CategoryID;
+
+            updatedItem.PDFDocument = new PDFDocument();
+            updatedItem.Picture = new Picture();
 
             if (itemToUpdate != null)
             {
-                updatedItem.ItemName = item.ItemName;
-                updatedItem.Price = item.Price;
-                updatedItem.DateOfPurchase = item.DateOfPurchase;
-                updatedItem.Shop = item.Shop;
-                updatedItem.Warranty = item.Warranty;
-                updatedItem.Note = item.Note;
-                updatedItem.DaysToReturn = item.Return;
-                updatedItem.ItemCategory = this.context.ItemCategory.Single(x => x.CategoryName == item.Category);
-                updatedItem.PDFDocument = new PDFDocument() { PDFDocumentName = item.PDFDocumentName, PDFDocumentArray = item.PDFDocument };
-                updatedItem.Picture = new Picture() { PictureName = item.PictureName, PictureArray = item.Picture };
+                if (itemToUpdate.PDFDocument.PDFDocumentArray != null && itemToUpdate.PDFDocument.PDFDocumentName != null
+                    && item.PDFDocument.SequenceEqual(itemToUpdate.PDFDocument.PDFDocumentArray) 
+                    && item.PDFDocumentName == itemToUpdate.PDFDocument.PDFDocumentName)
+                {
+                    updatedItem.PDFDocument.DocumentID = itemToUpdate.PDFDocument.DocumentID;
+                    updatedItem.DocumentID = itemToUpdate.PDFDocument.DocumentID;
+                    updatedItem.PDFDocument.PDFDocumentName = itemToUpdate.PDFDocument.PDFDocumentName;
+                    updatedItem.PDFDocument.PDFDocumentArray = itemToUpdate.PDFDocument.PDFDocumentArray;
+                }
+                else
+                {
+                    var checkIfDocumentExistInDatabase = this.context.PDFDocument.ToList().Where(x => x.PDFDocumentName == item.PDFDocumentName && x.PDFDocumentArray == item.PDFDocument).FirstOrDefault();
+
+                    if (checkIfDocumentExistInDatabase == null)
+                    {
+                        var newPDFDocument = new PDFDocument() { PDFDocumentArray = item.PDFDocument, PDFDocumentName = item.PDFDocumentName };
+                        this.context.PDFDocument.Add(newPDFDocument);
+                        this.context.SaveChanges();
+                    }
+                    
+                    var documentFromDataBase = this.context.PDFDocument.ToList().Where(x => x.PDFDocumentName == item.PDFDocumentName && x.PDFDocumentArray == item.PDFDocument).FirstOrDefault();
+                    updatedItem.PDFDocument.DocumentID = documentFromDataBase.DocumentID;
+                    updatedItem.DocumentID = documentFromDataBase.DocumentID;
+                    updatedItem.PDFDocument.PDFDocumentName = documentFromDataBase.PDFDocumentName;
+                    updatedItem.PDFDocument.PDFDocumentArray = documentFromDataBase.PDFDocumentArray;
+                }
+
+                if (updatedItem.Picture.PictureArray != null && updatedItem.Picture.PictureName != null
+                    && updatedItem.Picture.PictureArray == itemToUpdate.Picture.PictureArray
+                    && updatedItem.Picture.PictureName == itemToUpdate.Picture.PictureName)
+                {
+                    updatedItem.Picture.PictureID = itemToUpdate.Picture.PictureID;
+                    updatedItem.PictureID = itemToUpdate.Picture.PictureID;
+                    updatedItem.Picture.PictureName = itemToUpdate.Picture.PictureName;
+                    updatedItem.Picture.PictureArray = itemToUpdate.Picture.PictureArray;
+                }
+                else
+                {
+                    var checkIfPictureExistInDatabase = this.context.Picture.ToList().Where(x => x.PictureName == item.PictureName && x.PictureArray.SequenceEqual(item.Picture)).FirstOrDefault();
+
+                    if (checkIfPictureExistInDatabase == null)
+                    {
+                        var newPicture = new Picture() { PictureArray = item.Picture, PictureName = item.PictureName };
+                        this.context.Picture.Add(newPicture);
+                        this.context.SaveChanges();
+                    }
+                    
+                    var pictureFromDatabase = this.context.Picture.ToList().Where(x => x.PictureName == item.PictureName && x.PictureArray.SequenceEqual(item.Picture)).FirstOrDefault();
+                    updatedItem.Picture.PictureID = pictureFromDatabase.PictureID;
+                    updatedItem.PictureID = pictureFromDatabase.PictureID;
+                    updatedItem.Picture.PictureName = pictureFromDatabase.PictureName;
+                    updatedItem.Picture.PictureArray = pictureFromDatabase.PictureArray;
+                }
 
                 this.context.Entry(itemToUpdate).CurrentValues.SetValues(updatedItem);
                 this.context.SaveChanges();
             }
-
         }
     }
 
