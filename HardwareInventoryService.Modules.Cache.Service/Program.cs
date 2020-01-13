@@ -86,7 +86,7 @@ namespace HardwareInventoryService.Modules.Cache.Service
 
                     _cacheService.Start();
                     GetData(_dataProviderService);
-                    
+
 
                     //var file = File.ReadAllBytes("C:/Users/Artur/Desktop/pexels-photo-247885.jpeg");
                     //Users users = new Users();
@@ -95,6 +95,8 @@ namespace HardwareInventoryService.Modules.Cache.Service
                     //users.Photo = file;
 
                     //_dataProviderService.AddUser(users);
+
+                    Console.Title = AppDomain.CurrentDomain.FriendlyName;
 
                     Console.WriteLine("Press any key to stop...");
                     Console.ReadKey(true);

@@ -72,7 +72,7 @@ namespace HardwareInventoryService.Modules.Authorization.Service
                 //_consoleHandler = ConsoleEventHandler;
                 //SetConsoleCtrlHandler(_consoleHandler, true);
 
-                //Console.Title = AppDomain.CurrentDomain.FriendlyName;
+                Console.Title = AppDomain.CurrentDomain.FriendlyName;
 
                 _wcfService.Start();
 
