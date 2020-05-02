@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="464beeec74e34a909dc4cc4b570f14ff" Name="Diagram1">
+        <EntityTypeShape EntityType="HardwareInventoryModel.Users" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HardwareInventoryModel.Sessions" Width="1.5" PointX="0.625" PointY="0.625" />
+        <AssociationConnector Association="HardwareInventoryModel.FK_Sessions_Users" />
+        <EntityTypeShape EntityType="HardwareInventoryModel.Item" Width="1.5" PointX="4.5" PointY="0.75" />
+        <EntityTypeShape EntityType="HardwareInventoryModel.ItemCategory" Width="1.5" PointX="2.375" PointY="3.125" />
+        <AssociationConnector Association="HardwareInventoryModel.FK_Item_ItemCategory" />
+        <AssociationConnector Association="HardwareInventoryModel.FK_Item_Users" />
+        <EntityTypeShape EntityType="HardwareInventoryModel.PDFDocument" Width="1.5" PointX="6.625" PointY="3.25" />
+        <EntityTypeShape EntityType="HardwareInventoryModel.Picture" Width="1.5" PointX="6.75" PointY="0.875" />
+        <AssociationConnector Association="HardwareInventoryModel.FK_Item_PDFDocument" />
+        <AssociationConnector Association="HardwareInventoryModel.FK_Item_Picture" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

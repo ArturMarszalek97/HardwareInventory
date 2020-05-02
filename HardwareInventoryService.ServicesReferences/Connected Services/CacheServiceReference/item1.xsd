@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models.Enums" />
+  <xs:complexType name="ExceptionDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BlockedTill" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExceptionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoginAttempts" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HardwareInventoryService.Models.Models.Enums" minOccurs="0" name="Status" type="q1:ErrorCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExceptionDetail" nillable="true" type="tns:ExceptionDetail" />
+  <xs:complexType name="Item">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfPurchase" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateOfPurchaseToDisplay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageSource" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemID" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PDFDocument" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PDFDocumentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Picture" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PictureName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" type="xs:float" />
+      <xs:element minOccurs="0" name="Return" type="xs:int" />
+      <xs:element minOccurs="0" name="ReturnToDisplay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Shop" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      <xs:element minOccurs="0" name="Warranty" type="xs:int" />
+      <xs:element minOccurs="0" name="WarrantyToDisplay" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Item" nillable="true" type="tns:Item" />
+  <xs:complexType name="ArrayOfItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItem" nillable="true" type="tns:ArrayOfItem" />
+</xs:schema>
